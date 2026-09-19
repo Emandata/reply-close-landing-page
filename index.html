@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The 24/7 Vendor Sales Engine: a WhatsApp and Instagram sales system for Nigerian vendors.">
   <title>Reply & Close | The 24/7 Vendor Sales Engine</title>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2324842898318551');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
   <style>
     :root { --ink:#102d46; --muted:#607080; --blue:#207faa; --sky:#eaf6fb; --line:#d6e2e9; --cream:#fbfaf7; --white:#fff; --gold:#f5b638; --shadow:0 18px 45px rgba(16,45,70,.12); --radius:22px; }
     * { box-sizing:border-box; }
@@ -79,6 +93,7 @@
   </style>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2324842898318551&ev=PageView&noscript=1" alt=""></noscript>
   <div class="announcement"><strong>Launch Offer</strong><span>—</span><b>Save ₦5,100</b><span>•</span><span>Get the ₦15,000 value for ₦9,900</span></div>
   <header class="wrap nav">
     <a href="#top" class="brand" aria-label="Reply & Close home"><span class="brand-mark">↗</span><span>Reply &amp; Close</span></a>
@@ -129,6 +144,18 @@
   </div>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('a[href="https://selar.com/ro2j22717c"]').forEach(function (checkoutLink) {
+      checkoutLink.addEventListener('click', function () {
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'InitiateCheckout', {
+            content_name: 'The 24/7 Vendor Sales Engine',
+            value: 9900,
+            currency: 'NGN'
+          });
+        }
+      });
+    });
 
     (function () {
       var lockKey = 'priceLockExpiry';
@@ -206,3 +233,4 @@
   </script>
 </body>
 </html>
+
