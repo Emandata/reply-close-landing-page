@@ -1,241 +1,334 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The 24/7 Vendor Sales Engine: a WhatsApp and Instagram sales system for Nigerian vendors.">
-  <title>Reply & Close | The 24/7 Vendor Sales Engine</title>
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2324842898318551');
-    fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
-  <!-- Vercel Web Analytics for this plain HTML site -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-  <style>
-    :root { --ink:#102d46; --muted:#607080; --blue:#207faa; --sky:#eaf6fb; --line:#d6e2e9; --cream:#fbfaf7; --white:#fff; --gold:#f5b638; --shadow:0 18px 45px rgba(16,45,70,.12); --radius:22px; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; color:var(--ink); background:var(--cream); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.55; }
-    h1,h2,h3,p { margin:0; }
-    h1,h2 { font-family:Georgia, "Times New Roman", serif; letter-spacing:-.045em; line-height:1.04; }
-    a { color:inherit; }
-    .wrap { width:min(1120px, calc(100% - 40px)); margin:auto; }
-    .announcement { min-height:43px; display:flex; align-items:center; justify-content:center; gap:6px; background:var(--ink); color:#fff; font-size:13px; font-weight:800; letter-spacing:.02em; text-align:center; padding:9px 20px; }.announcement strong { color:#73c8e8; }.announcement b { color:#f7bb2c; }
-    .nav { height:78px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
-    .brand { display:flex; align-items:center; gap:10px; font-weight:900; text-decoration:none; letter-spacing:-.035em; }
-    .brand-mark { width:32px; height:32px; display:grid; place-items:center; color:#fff; background:var(--blue); border-radius:9px; font-size:16px; }
-    .nav-links { display:flex; align-items:center; gap:25px; font-size:14px; color:#526373; font-weight:700; }
-    .nav-links a { text-decoration:none; }
-    .button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:54px; padding:0 23px; border-radius:12px; border:1px solid transparent; background:var(--ink); color:#fff; font-weight:850; font-size:15px; text-decoration:none; box-shadow:0 10px 22px rgba(16,45,70,.18); transition:transform .18s ease, background .18s ease; }
-    .button:hover { transform:translateY(-2px); background:#173b5a; }
-    .button.alt { background:#fff; color:var(--ink); border-color:var(--line); box-shadow:none; }
-    .button.small { min-height:42px; padding:0 16px; font-size:13px; }
-    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--blue); font-size:12px; font-weight:900; letter-spacing:.11em; text-transform:uppercase; }
-    .eyebrow::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--blue); }
-    .hero { padding:80px 0 74px; overflow:hidden; }
-    .hero-grid { display:block; max-width:790px; }
-    .hero h1 { max-width:620px; font-size:clamp(46px, 5.5vw, 74px); margin:14px 0 24px; }
-    .lead { max-width:600px; color:var(--muted); font-size:19px; }
-    .checks { list-style:none; margin:26px 0 30px; padding:0; display:grid; gap:12px; font-size:16px; font-weight:650; }
-    .checks li { display:flex; gap:11px; align-items:flex-start; }
-    .checks li::before { content:"✓"; color:var(--blue); font-weight:1000; }
-    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
-    .microcopy { margin-top:13px; color:var(--muted); font-size:13px; }
-    .product-stage { min-height:510px; position:relative; display:grid; place-items:center; background:linear-gradient(145deg,#eef9fd 0%,#f9fcfd 67%); border:1px solid #c4e1ed; border-radius:28px; overflow:hidden; }
-    .product-stage::before,.product-stage::after { content:""; position:absolute; border-radius:50%; background:#b2dfef; opacity:.4; }
-    .product-stage::before { width:310px;height:310px;right:-135px;top:-118px; }.product-stage::after { width:235px;height:235px;left:-112px;bottom:-112px; }
-    .cover { position:absolute; width:49%; border-radius:5px; box-shadow:0 29px 44px rgba(23,61,80,.25), 0 5px 13px rgba(23,61,80,.16); z-index:2; transform:rotate(-4.5deg); border:1px solid rgba(255,255,255,.76); }
-    .cover.guide { left:14%; top:12%; }.cover.workbook { right:13%; bottom:11%; transform:rotate(4.5deg); }
-    .stage-badge { position:absolute; z-index:3; right:11%; top:11%; background:#fff; padding:10px 14px; border-radius:99px; box-shadow:0 10px 23px rgba(16,45,70,.15); font-size:12px; font-weight:900; color:var(--ink); }
-    .trust { border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:21px 0; background:#fff; }
-    .trust-row { display:flex; align-items:center; justify-content:center; gap:14px; text-align:center; }
-    .stars { color:#f7bb2c !important; letter-spacing:2px; font-family:"Segoe UI Symbol","Arial Unicode MS",sans-serif; font-size:20px; font-weight:900; text-shadow:0 0 9px rgba(247,187,44,.55),0 1px 0 #c87e00; -webkit-text-stroke:.2px #d68d05; }.trust strong { font-size:15px; }.trust span { color:var(--muted); font-size:14px; }
-    section { padding:100px 0; }
-    .section-head { max-width:710px; margin-bottom:42px; }.section-head h2 { font-size:clamp(37px,4.3vw,58px); margin-top:13px; }.section-head p { color:var(--muted); font-size:18px; margin-top:18px; }
-    .manual { background:var(--sky); }.manual-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; align-items:center; }
-    .time-card { padding:8px 24px 14px; border-radius:18px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow); }
-    .time-card-label { display:flex; align-items:center; gap:9px; padding:17px 0 9px; color:var(--ink); font-size:12px; font-weight:950; letter-spacing:.11em; text-transform:uppercase; }.time-card-label::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 5px #e4f4fa; }
-    .leak { display:grid; grid-template-columns:35px minmax(0,1fr) auto; gap:12px; align-items:center; padding:16px 0; border-bottom:1px solid var(--line); font-size:15px; }.leak:last-child { border:0; }.leak-num { display:grid; place-items:center; width:28px; height:28px; border-radius:8px; background:#eef8fc; color:var(--blue) !important; font-weight:950; font-size:11px; }.leak-title { color:var(--muted) !important; }.leak b { color:var(--blue); white-space:nowrap; }
-    .callout { padding:25px; margin-top:19px; background:var(--ink); color:#fff; border-radius:18px; }.callout strong { display:block; font-size:18px; }.callout p { color:#d8e5ee; margin-top:7px; font-size:14px; }
-    .method { background:#fff; }.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }.step { padding:30px; border:1px solid var(--line); border-radius:18px; background:var(--cream); }.step-num { color:var(--blue); font-size:12px; letter-spacing:.13em; font-weight:950; text-transform:uppercase; }.step h3 { margin:17px 0 10px; font-size:21px; line-height:1.15; }.step p { color:var(--muted); font-size:15px; }
-    .inside-grid { display:grid; gap:24px; }.inside-feature { display:grid; grid-template-columns:1fr 1fr; min-height:390px; border:1px solid var(--line); border-radius:23px; overflow:hidden; background:#fff; }.inside-feature:nth-child(even) .inside-visual { order:2; }.inside-visual { position:relative; min-height:390px; overflow:hidden; display:grid; place-items:center; background:linear-gradient(145deg,#eaf7fc,#f8fcfd); }.inside-visual::before,.inside-visual::after { content:""; position:absolute; width:180px; height:180px; border-radius:50%; background:#c4e8f5; opacity:.58; }.inside-visual::before { top:-77px; right:-70px; }.inside-visual::after { bottom:-112px; left:-88px; }.paper { position:absolute; width:59%; z-index:2; border:1px solid rgba(255,255,255,.9); border-radius:4px; box-shadow:0 26px 40px rgba(18,58,77,.24), 0 5px 12px rgba(18,58,77,.14); }.paper.main { transform:rotate(4deg); }.paper.back { width:54%; transform:translate(-20px,-9px) rotate(-5deg); filter:brightness(.985); box-shadow:0 18px 35px rgba(18,58,77,.16); }.inside-feature:nth-child(even) .paper.main { transform:rotate(-4deg); }.inside-feature:nth-child(even) .paper.back { transform:translate(20px,-9px) rotate(5deg); }.inside-copy { display:flex; flex-direction:column; justify-content:center; padding:52px clamp(30px,5vw,72px); }.inside-kicker { color:var(--blue); font-size:12px; font-weight:950; letter-spacing:.12em; text-transform:uppercase; margin-bottom:11px; }.inside-copy h3 { font-family:Georgia, "Times New Roman", serif; letter-spacing:-.035em; font-size:clamp(28px,3vw,40px); line-height:1.08; margin-bottom:15px; }.inside-copy p { color:var(--muted); font-size:16px; max-width:430px; }.inside-points { list-style:none; margin:20px 0 0; padding:0; display:grid; gap:8px; color:#40596b; font-size:14px; font-weight:700; }.inside-points li::before { content:"✓"; color:var(--blue); margin-right:9px; font-weight:950; }
-    .inside-showcase { display:grid; grid-template-columns:repeat(3,1fr); gap:44px; margin-top:48px; }.inside-column { min-width:0; }.inside-paper-stage { height:343px; position:relative; display:grid; place-items:center; margin-bottom:31px; isolation:isolate; }.inside-paper-stage::before,.inside-paper-stage::after { content:""; position:absolute; width:88%; height:275px; border-radius:7px; background:rgba(255,255,255,.82); border:1px solid rgba(233,240,244,.95); box-shadow:0 23px 40px rgba(20,54,71,.14); z-index:0; }.inside-paper-stage::before { transform:translate(-18px,4px) rotate(-5deg); }.inside-paper-stage::after { transform:translate(17px,-2px) rotate(5deg); opacity:.72; }.showcase-paper { position:absolute; z-index:2; width:84%; height:287px; max-height:none; object-fit:cover; object-position:top center; border-radius:6px; box-shadow:0 28px 42px rgba(20,54,71,.24),0 6px 13px rgba(20,54,71,.13); border:1px solid rgba(255,255,255,.95); }.showcase-paper.back { z-index:1; width:81%; height:281px; transform:translate(-18px,-4px) rotate(-5deg); box-shadow:0 20px 33px rgba(20,54,71,.17); filter:brightness(1.01); }.showcase-paper.main { transform:translate(13px,3px) rotate(4deg); }.inside-column:nth-child(2) .showcase-paper.main { transform:rotate(-2.2deg); width:87%; }.inside-column:nth-child(3) .showcase-paper.back { transform:translate(-18px,-6px) rotate(-5deg); }.inside-column:nth-child(3) .showcase-paper.main { transform:translate(14px,3px) rotate(4deg); }.inside-step { color:#6a8495; font-size:11px; letter-spacing:.1em; font-weight:950; text-transform:uppercase; }.inside-title-row { display:flex; align-items:center; justify-content:space-between; gap:14px; margin:12px 0 18px; }.inside-title-row h3 { color:var(--ink); font-size:24px; line-height:1.12; letter-spacing:-.04em; }.inside-arrow { display:grid; flex:0 0 auto; place-items:center; width:39px; height:39px; border-radius:50%; border:1px solid var(--line); color:var(--blue); font-weight:950; box-shadow:0 5px 12px rgba(17,50,70,.08); }.inside-column > p { min-height:102px; color:var(--muted); font-size:15px; }.what-you-get { min-height:94px; padding:15px 17px; border-left:3px solid #8bc9df; border-radius:10px; background:linear-gradient(90deg,#f0f9fc,rgba(240,249,252,.12)); }.what-you-get span { display:block; color:#648093; font-size:10px; font-weight:950; letter-spacing:.1em; text-transform:uppercase; margin-bottom:5px; }.what-you-get strong { display:block; color:#395264; font-size:13px; line-height:1.38; }.included { margin:62px auto 0; max-width:750px; text-align:center; }.included-label { color:#6a8495; font-weight:950; font-size:11px; letter-spacing:.12em; text-transform:uppercase; }.included-pills { display:flex; justify-content:center; gap:9px; flex-wrap:wrap; margin:15px 0 24px; }.included-pills span { padding:7px 12px; background:#fff; border:1px solid var(--line); border-radius:999px; color:#516979; font-size:12px; font-weight:750; box-shadow:0 3px 8px rgba(17,50,70,.05); }
-    .bundle { background:var(--ink); color:#fff; }.bundle-grid { display:grid; grid-template-columns:1fr .95fr; gap:55px; align-items:center; }.bundle .section-head p { color:#bed1df; }.bundle-preview { display:grid; grid-template-columns:1fr 1fr; gap:15px; }.bundle-preview img { width:100%; box-shadow:0 15px 28px rgba(0,0,0,.25); border-radius:5px; }.purchase { padding:31px; color:var(--ink); background:#fff; border-radius:22px; box-shadow:0 20px 50px rgba(0,0,0,.18); }.purchase .eyebrow { margin-bottom:10px; }.purchase h3 { font-size:27px; line-height:1.12; margin-bottom:16px; }.rating { display:flex; align-items:center; gap:8px; color:#536778; font-size:13px; font-weight:700; }.price-block { margin:20px 0; padding:16px 0 0; border-top:1px solid var(--line); }.value-row { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:3px; }.value-row span:first-child { color:var(--muted); font-size:13px; font-weight:750; }.saving-pill { padding:5px 10px; border-radius:999px; background:#eaf8f3; color:#13815a; font-size:12px; font-weight:900; }.was-price { color:#536778; font-size:17px; font-weight:750; text-decoration:line-through; text-decoration-color:#bd5a49; text-decoration-thickness:1.5px; }.price { font-size:50px; font-weight:950; letter-spacing:-.065em; margin:1px 0 0; }.price small { letter-spacing:0; font-size:13px; color:var(--muted); }.price-note { margin-top:2px; color:#637787; font-size:12px; font-weight:650; }.price-lock { display:flex; align-items:center; gap:8px; margin:14px 0 -4px; padding:9px 11px; border-radius:10px; background:var(--sky); color:var(--ink); font-size:12px; font-weight:850; }.price-lock::before { content:""; width:7px; height:7px; flex:0 0 auto; border-radius:50%; background:var(--blue); box-shadow:0 0 0 4px rgba(32,127,170,.13); }.price-lock.is-closed { color:var(--muted); }.price-lock.is-closed::before { background:var(--muted); box-shadow:none; }.includes { list-style:none; padding:17px 0 0; margin:0 0 20px; border-top:1px solid var(--line); display:grid; gap:10px; font-size:14px; }.includes li::before { content:"✓"; color:var(--blue); font-weight:900; margin-right:10px; }.purchase .button { width:100%; }.secure { margin-top:12px; text-align:center; color:var(--muted); font-size:12px; }
-    .faq { background:#fff; }.faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; }.faq-item { border:1px solid var(--line); padding:22px; border-radius:16px; }.faq-item h3 { font-size:17px; margin-bottom:8px; }.faq-item p { color:var(--muted); font-size:14px; }
-    .final { padding:92px 0 108px; text-align:center; }.final h2 { max-width:760px; margin:14px auto 20px; font-size:clamp(39px,5vw,62px); }.final p { max-width:590px; margin:0 auto 28px; color:var(--muted); font-size:18px; }.footer { padding:28px 0 100px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center; }
-    .sticky { display:none; position:fixed; z-index:20; bottom:0; left:0; right:0; padding:11px max(20px, calc((100vw - 1120px) / 2)) max(11px, env(safe-area-inset-bottom)); background:rgba(251,250,247,.97); border-top:1px solid var(--line); box-shadow:0 -10px 30px rgba(16,45,70,.12); backdrop-filter:blur(9px); }.sticky.is-visible { display:block; }.sticky-inner { display:flex; align-items:center; gap:18px; }.sticky-product { min-width:0; flex:1; }.sticky-product strong { display:block; font-size:14px; line-height:1.2; }.sticky-product span { display:block; margin-top:2px; color:var(--muted); font-size:12px; font-weight:700; }.sticky-price { white-space:nowrap; font-size:22px; font-weight:950; letter-spacing:-.05em; }.sticky .button { flex:0 0 auto; min-height:46px; padding:0 18px; }.sticky-dismiss { display:grid; flex:0 0 auto; place-items:center; width:35px; height:35px; padding:0; color:var(--muted); background:transparent; border:1px solid var(--line); border-radius:50%; font-size:20px; line-height:1; cursor:pointer; }.sticky-dismiss:hover { color:var(--ink); border-color:var(--blue); }body.has-sticky-cta { padding-bottom:84px; }
-    @media (max-width:800px) { .wrap { width:min(100% - 30px, 560px); }.nav { height:65px; }.nav-links { display:none; }.nav .button { min-height:38px; padding:0 12px; font-size:12px; }.hero { padding:49px 0 55px; }.manual-grid,.bundle-grid { grid-template-columns:1fr; gap:34px; }.hero h1 { font-size:46px; }.lead { font-size:17px; }.leak { grid-template-columns:31px minmax(0,1fr); gap:10px; }.leak b { grid-column:2; font-size:14px; }.steps,.inside-grid,.faq-grid,.inside-showcase { grid-template-columns:1fr; }.inside-showcase { gap:55px; margin-top:36px; }.inside-paper-stage { height:318px; margin-bottom:24px; }.inside-paper-stage::before,.inside-paper-stage::after { height:255px; }.showcase-paper { width:82%; height:266px; }.showcase-paper.back { width:79%; height:260px; }.inside-column:nth-child(2) .showcase-paper.main { width:85%; }.inside-column > p { min-height:0; }.what-you-get { margin-top:20px; }.included { margin-top:44px; }.inside-feature,.inside-feature:nth-child(even) { grid-template-columns:1fr; }.inside-feature:nth-child(even) .inside-visual { order:0; }.inside-visual { min-height:330px; }.paper { width:62%; }.paper.back { width:57%; }.inside-copy { padding:33px 28px 38px; }.inside-copy h3 { font-size:33px; }.section-head { margin-bottom:31px; }.section-head h2 { font-size:40px; } section { padding:68px 0; }.bundle { padding-bottom:76px; }.bundle-preview { width:88%; margin:auto; }.trust-row { flex-wrap:wrap; gap:6px 10px; }.sticky { padding:9px 12px max(9px, env(safe-area-inset-bottom)); }.sticky-inner { gap:9px; }.sticky-product strong { font-size:12px; }.sticky-product span { display:none; }.sticky-price { font-size:17px; }.sticky .button { min-height:43px; padding:0 11px; font-size:12px; }.sticky-dismiss { width:31px; height:31px; font-size:18px; }body.has-sticky-cta { padding-bottom:73px; }.footer { padding-bottom:24px; }.hero-actions .button { width:100%; }.hero-actions .alt { display:none; } }
-    @media (min-width:521px) and (max-width:800px) { .inside-paper-stage { width:min(100%,440px); height:282px; margin-left:auto; margin-right:auto; }.inside-paper-stage::before,.inside-paper-stage::after { width:82%; height:230px; }.showcase-paper { width:75%; height:241px; }.showcase-paper.back { width:71%; height:235px; }.inside-column:nth-child(2) .showcase-paper.main { width:78%; } }
-    .announcement { gap:10px; padding:10px 20px; }
-    .announcement .offer-kicker { color:var(--sky); font-size:11px; font-weight:950; letter-spacing:.13em; text-transform:uppercase; }
-    .announcement .offer-original { color:var(--cream); font-weight:800; opacity:.62; text-decoration:line-through; text-decoration-thickness:1.5px; }
-    .announcement .offer-arrow { color:var(--blue); font-size:16px; font-weight:950; }
-    .announcement .offer-current { color:#fff; font-size:15px; }
-    .announcement .offer-saving { padding:4px 9px; border-radius:999px; background:var(--sky); color:var(--ink); font-size:11px; font-weight:950; }
-    .announcement .announcement-timer { margin-left:4px; padding-left:14px; border-left:1px solid rgba(234,246,251,.3); color:var(--gold); font-weight:900; white-space:nowrap; }
-    @media (max-width:800px) { .announcement { flex-wrap:wrap; gap:5px 8px; padding:8px 10px; }.announcement .announcement-timer { width:100%; margin-left:0; padding-left:0; border-left:0; font-size:12px; }.announcement .offer-kicker { font-size:10px; }.announcement .offer-saving { padding:3px 7px; } }
-    .hero-grid { display:grid; grid-template-columns:minmax(0,1.12fr) minmax(300px,.72fr); max-width:1120px; gap:48px; align-items:center; }
-    .hero-grid > div { max-width:700px; }
-    .hero-product { position:relative; display:grid; place-items:center; min-height:520px; margin:0; isolation:isolate; }
-    .hero-product::before { content:""; position:absolute; z-index:-1; width:86%; aspect-ratio:1; border-radius:50%; background:var(--sky); }
-    .hero-product::after { content:""; position:absolute; z-index:-1; width:72%; height:24%; bottom:3%; border-radius:50%; background:rgba(16,45,70,.16); filter:blur(20px); }
-    .hero-product img { display:block; width:min(100%,370px); border-radius:4px; box-shadow:0 24px 42px rgba(16,45,70,.24); transform:rotate(2.5deg); }
-    .hero-product-label { position:absolute; z-index:1; top:11%; right:0; padding:8px 12px; border:1px solid var(--line); border-radius:999px; background:var(--cream); color:var(--ink); box-shadow:0 10px 24px rgba(16,45,70,.12); font-size:10px; font-weight:950; letter-spacing:.09em; text-transform:uppercase; }
-    @media (max-width:800px) { .hero-grid { grid-template-columns:1fr; gap:20px; }.hero-product { min-height:450px; margin-top:6px; }.hero-product img { width:min(78vw,350px); }.hero-product-label { top:8%; right:5%; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reply &amp; Close | The 24/7 Sales Engine</title>
+<meta name="description" content="A Sales Guide and fillable Workbook that help you reply faster, label leads and follow up on time in WhatsApp and Instagram. Instant download, one-time payment.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reply &amp; Close | The 24/7 Sales Engine">
+<meta property="og:description" content="Save your replies, label every lead and follow up on time, with a simple system that works inside WhatsApp Business and Instagram.">
+<meta property="og:image" content="assets/guide-p1.png">
+
+<link rel="icon" href="favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2324842898318551&ev=PageView&noscript=1" alt=""></noscript>
-  <div class="announcement"><strong>Launch Offer</strong><span>—</span><b>Save ₦5,100</b><span>•</span><span>Get the ₦15,000 value for ₦9,900</span></div>
-  <header class="wrap nav">
-    <a href="#top" class="brand" aria-label="Reply & Close home"><span class="brand-mark">↗</span><span>Reply &amp; Close</span></a>
-    <nav class="nav-links" aria-label="Primary navigation"><a href="#problem">The Cost</a><a href="#method">The Method</a><a href="#inside">What’s Inside</a><a href="#faq">FAQ</a></nav>
-    <a class="button small" href="https://selar.com/ro2j22717c">Get Instant Access <span>→</span></a>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">For Nigerian online vendors</div>
-          <h1>Stop losing sales in your Instagram and WhatsApp chats.</h1>
-          <p class="lead">The 24/7 Vendor Sales Engine gives you the messages, follow-up system and simple tracking routine to reply faster and move more buyer conversations to paid orders.</p>
-          <ul class="checks"><li>Customers asking “price?” and getting a late reply?</li><li>Answering the same availability, delivery and payment questions daily?</li><li>Interested buyers disappearing because nobody follows up?</li><li>Trying to stay organised while DMs and WhatsApp messages pile up?</li></ul>
-          <div class="hero-actions"><a class="button" href="https://selar.com/ro2j22717c">Get the Sales Engine for ₦9,900 <span>→</span></a><a class="button alt" href="#inside">See what’s inside</a></div>
-          <p class="microcopy">Guide + interactive workbook • One-time payment • Instant digital access</p>
+<header class="site-header">
+  <div class="wrap">
+    <a href="#top" class="brand" id="top" aria-label="Reply &amp; Close home">
+      <span class="brand-mark">R</span>
+      <span>Reply &amp; Close</span>
+    </a>
+    <nav class="header-links" aria-label="Page sections">
+      <a href="#inside">What's inside</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-sm cta-link" href="TODO:SELAR_URL" data-cta="header">Get Instant Access</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Guide + fillable Workbook &bull; instant download &bull; no apps or bots</span>
+        <h1>Stop Losing Sales in Your WhatsApp and Instagram Chats</h1>
+        <p class="hero-desc">Save your replies, label every lead and follow up on time, with a simple system that works inside WhatsApp Business and Instagram.</p>
+
+        <div class="price-row">
+          <span class="price-now" data-field="price">₦2,500</span>
+          <span class="price-was" data-field="was-price-wrap">Previously <del data-field="was-price">₦9,900</del></span>
         </div>
-        <aside class="hero-product" aria-label="The 24/7 Vendor Sales Engine product cover">
-          <div class="hero-product-label">Guide + interactive workbook</div>
-          <img src="assets/vendor-sales-engine-cover.png" alt="Cover of The 24/7 Vendor Sales Engine for Nigerian vendors">
-        </aside>
+        <p class="price-note">One-time payment. No subscription.</p>
+
+        <div class="hero-cta">
+          <a class="btn cta-link" href="TODO:SELAR_URL" data-cta="hero">Get Instant Access</a>
+        </div>
+        <a class="btn-text hero-see-inside" href="#inside">See inside the pages</a>
+
+        <div class="trust-grid">
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#5EE19A" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#0D5338" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Instant download by email</span>
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#5EE19A" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#0D5338" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Fill in on your phone or print (TODO: confirm phone-fill works)</span>
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#5EE19A" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#0D5338" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>One-time payment</span>
+          </div>
+          <div class="trust-item">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#5EE19A" stroke-width="2"/><path d="M6 10.5l2.5 2.5L14 7.5" stroke="#0D5338" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Works with WhatsApp Business and Instagram</span>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section class="trust" aria-label="Customer rating"><div class="wrap trust-row"><span class="stars" aria-label="4.8 out of 5 stars">★★★★★</span><strong>4.8/5 average rating</strong><span>from 20+ buyers</span></div></section>
+      <div class="hero-covers">
+        <picture>
+          <source srcset="assets/guide-p1.webp" type="image/webp">
+          <img class="cover-guide" src="assets/guide-p1.png" alt="Cover of the Sales Guide, part of The 24/7 Sales Engine" width="455" height="643">
+        </picture>
+        <picture>
+          <source srcset="assets/workbook-p1.webp" type="image/webp">
+          <img class="cover-workbook" src="assets/workbook-p1.png" alt="Cover of the fillable Workbook, part of The 24/7 Sales Engine" width="455" height="643">
+        </picture>
+      </div>
+    </div>
+  </section>
 
-    <section class="manual" id="problem"><div class="wrap manual-grid"><div class="section-head"><div class="eyebrow">The manual cost</div><h2>Slow replies quietly cost you more than time.</h2><p>Most vendors do not lose a sale because their product is bad. The buyer simply asked, waited, got distracted or bought from a vendor who replied first.</p></div><div><div class="time-card"><div class="time-card-label">Where sales slip through</div><div class="leak"><span class="leak-num">01</span><span class="leak-title">New inquiries waiting in unread chats</span><b>Missed momentum</b></div><div class="leak"><span class="leak-num">02</span><span class="leak-title">The same price, delivery and availability answers</span><b>Repeated work</b></div><div class="leak"><span class="leak-num">03</span><span class="leak-title">Buyers who said “I’ll get back to you”</span><b>Forgotten follow-ups</b></div><div class="leak"><span class="leak-num">04</span><span class="leak-title">Payment and delivery questions after the sale</span><b>Trust gaps</b></div><div class="leak"><span class="leak-num">05</span><span class="leak-title">People who view your Status but never message</span><b>Untapped demand</b></div></div><div class="callout"><strong>You do not need to be online every minute.</strong><p>You need a simple system that makes the next right reply and follow-up obvious.</p></div></div></div></section>
+  <!-- ===== Five jobs strip ===== -->
+  <section class="jobs">
+    <div class="wrap jobs-grid">
+      <div class="job-card"><span class="job-num">1</span><p>Capture the inquiry</p></div>
+      <div class="job-card"><span class="job-num">2</span><p>Reply with clarity</p></div>
+      <div class="job-card"><span class="job-num">3</span><p>Follow up on time</p></div>
+      <div class="job-card"><span class="job-num">4</span><p>Close and confirm</p></div>
+      <div class="job-card"><span class="job-num">5</span><p>Keep trust after payment</p></div>
+    </div>
+  </section>
 
-    <section class="method" id="method"><div class="wrap"><div class="section-head"><div class="eyebrow">The Reply &amp; Close method</div><h2>Set up your sales engine in three simple steps.</h2><p>Built for a busy vendor—not a technical person. You can start with what already happens in your chats.</p></div><div class="steps"><article class="step"><div class="step-num">Step 01</div><h3>Get your sales facts in one place</h3><p>Capture your products, prices, delivery terms, frequently asked questions, buyer objections and brand voice.</p></article><article class="step"><div class="step-num">Step 02</div><h3>Save the replies you use most</h3><p>Turn repeated answers into clear templates for greetings, prices, availability, payment, delivery and customer concerns.</p></article><article class="step"><div class="step-num">Step 03</div><h3>Follow up and close with intention</h3><p>Use a simple lead flow, follow-up sequence, recovery scripts, Status prompts and buyer-tracking routine.</p></article></div></div></section>
+  <!-- ===== Does this sound familiar? ===== -->
+  <section id="familiar">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Sound familiar?</span>
+        <h2>Does this sound familiar?</h2>
+      </div>
+      <ul class="problems-list">
+        <li>Someone asks "how much?" and you reply hours later, or forget.</li>
+        <li>You type the same answers to the same questions all day.</li>
+        <li>Buyers say "I'll get back to you" and you never follow up.</li>
+        <li>After payment, buyers keep asking where their order is.</li>
+        <li>People view your Status every day but never message you.</li>
+      </ul>
+    </div>
+  </section>
 
-    <section id="inside"><div class="wrap"><div class="section-head" style="max-width:820px;margin-left:auto;margin-right:auto;text-align:center"><div class="eyebrow">A look inside</div><h2>Inside The 24/7 Vendor Sales Engine</h2><p>Real pages from the guide and workbook, built to help you reply faster, follow up with intention and keep more buyers moving toward an order.</p></div><div class="inside-grid"><article class="inside-feature"><div class="inside-visual"><img class="paper back" src="assets/guide-cover.png" alt="The 24/7 Vendor Sales Engine guide cover"><img class="paper main" src="assets/guide-page.png" alt="A guide page explaining the vendor sales process"></div><div class="inside-copy"><div class="inside-kicker">Part 01 · Sales Guide</div><h3>Know what to do with every inquiry.</h3><p>The guide shows you the simple path from a new message to a paid order, so your chats do not feel random or overwhelming.</p><ul class="inside-points"><li>Reply with clarity</li><li>Build trust before payment</li><li>Follow up without sounding desperate</li></ul></div></article><article class="inside-feature"><div class="inside-visual"><img class="paper back" src="assets/workbook-cover.png" alt="The 24/7 Vendor Sales Engine workbook cover"><img class="paper main" src="assets/quick-replies-page.png" alt="A workbook page for greeting and away messages"></div><div class="inside-copy"><div class="inside-kicker">Part 02 · Interactive Workbook</div><h3>Build the replies your business needs.</h3><p>Use the fill-in workbook to create your greeting, quick replies, FAQs, policies and message style before the next buyer enters your chat.</p><ul class="inside-points"><li>Greeting and away messages</li><li>Saved replies for common questions</li><li>Scripts that still sound like you</li></ul></div></article><article class="inside-feature"><div class="inside-visual"><img class="paper back" src="assets/workbook-page.png" alt="A workbook page for planning sales follow-ups"><img class="paper main" src="assets/follow-up-page.png" alt="A workbook page with follow-up and recovery scripts"></div><div class="inside-copy"><div class="inside-kicker">Part 03 · Follow-Up System</div><h3>Stop letting interested buyers disappear.</h3><p>Map your labels, follow-up timing and recovery messages so you always know which buyer needs your attention next.</p><ul class="inside-points"><li>Simple lead stages</li><li>Follow-up and recovery scripts</li><li>Order updates that protect trust</li></ul></div></article></div><div class="included"><div class="included-label">What’s included</div><div class="included-pills"><span>Sales Guide</span><span>Interactive Workbook</span><span>Quick Reply Builder</span><span>Follow-Up Scripts</span><span>Lead Tracker</span><span>Status + Broadcast Templates</span><span>AI Prompt Pack</span><span>Monthly Review</span></div><a class="button" href="https://selar.com/ro2j22717c">Get the Guide + Workbook <span>→</span></a></div></div></section>
+  <!-- ===== How it works ===== -->
+  <section class="method" id="how-it-works">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Set it up in about 45 minutes</h2>
+      </div>
+      <div class="method-steps">
+        <div class="method-step">
+          <span class="step-num">Step 1</span>
+          <h3>Write your facts.</h3>
+          <p>The Business Snapshot holds your prices, delivery details, payment methods and policies, so every reply is accurate.</p>
+        </div>
+        <div class="method-step">
+          <span class="step-num">Step 2</span>
+          <h3>Save your replies.</h3>
+          <p>Build Quick Replies like /price, /delivery, /stock, /payment and /order.</p>
+        </div>
+        <div class="method-step">
+          <span class="step-num">Step 3</span>
+          <h3>Label and follow up.</h3>
+          <p>Six lead labels and a follow-up plan: 2-4 hours, next day, 3-4 days, then close the loop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="bundle" id="buy"><div class="wrap bundle-grid"><div><div class="section-head"><div class="eyebrow">One-time purchase</div><h2>Give your business a sales system you can use every day.</h2><p>This is for the vendor who is tired of remembering everything in their head, searching old chats and losing track of people ready to buy.</p></div></div><aside class="purchase"><div class="eyebrow">One-time purchase</div><h3>The 24/7 Vendor Sales Engine</h3><div class="rating"><span class="stars">★★★★★</span><span>4.8/5 from 20+ buyers</span></div><div class="price-block"><div class="value-row"><span>Full value</span><span class="saving-pill">₦5,100 saved</span></div><div class="was-price">₦15,000</div><div class="price">₦9,900 <small>NGN</small></div><div class="price-note">One-time payment · Instant digital access</div></div><ul class="includes"><li>WhatsApp + Instagram Sales Guide</li><li>Interactive Sales Workbook</li><li>Quick Reply, Greeting &amp; Away Message Builder</li><li>Objection, Follow-Up and Recovery Scripts</li><li>Lead labels, inquiry tracker and order-trust tools</li><li>Status, broadcast and AI prompt templates</li></ul><a class="button" href="https://selar.com/ro2j22717c">Get Instant Access <span>→</span></a><p class="secure">Instant digital access after payment via Selar</p></aside></div></section>
+  <!-- ===== What's inside ===== -->
+  <section id="inside">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What's inside</span>
+        <h2>See what's inside. Tap a page to open it larger.</h2>
+      </div>
 
-    <section class="faq" id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">Before you buy</div><h2>Questions vendors usually ask.</h2></div><div class="faq-grid"><article class="faq-item"><h3>Is this only for advanced vendors?</h3><p>No. It is written for a vendor who sells through Instagram or WhatsApp and wants a clear system without complicated software.</p></article><article class="faq-item"><h3>Do I need to be good with AI?</h3><p>No. The product explains practical ways to use the templates and optional AI prompts in plain language.</p></article><article class="faq-item"><h3>What exactly will I receive?</h3><p>You receive the complete digital Guide and Interactive Workbook immediately after a successful payment.</p></article><article class="faq-item"><h3>Can I use this for any product category?</h3><p>Yes. The templates are designed for personalisation, whether you sell fashion, beauty, food, services, digital products or another offer.</p></article><article class="faq-item"><h3>When do I get access?</h3><p>Access is delivered digitally after payment. You can begin working through the first setup pages immediately.</p></article><article class="faq-item"><h3>What is the refund policy?</h3><p>This is an instant-access digital product. Please read the contents above before purchasing, as digital purchases are final.</p></article></div></div></section>
+      <div class="inside-layout">
+        <div class="inside-tabs" role="tablist" aria-label="What's inside the Guide and Workbook">
+          <button class="inside-tab" role="tab" id="tab-core" aria-controls="panel-core" aria-selected="true" data-panel="panel-core">Core setup</button>
+          <button class="inside-tab" role="tab" id="tab-growth" aria-controls="panel-growth" aria-selected="false" tabindex="-1" data-panel="panel-growth">Growth tools</button>
+          <button class="inside-tab" role="tab" id="tab-guide" aria-controls="panel-guide" aria-selected="false" tabindex="-1" data-panel="panel-guide">The Guide</button>
+          <button class="inside-tab" role="tab" id="tab-copy" aria-controls="panel-copy" aria-selected="false" tabindex="-1" data-panel="panel-copy">Copy &amp; paste library</button>
+        </div>
 
-    <section class="final"><div class="wrap"><div class="eyebrow">Your next sale can be easier</div><h2>Stop letting interested buyers disappear in your chats.</h2><p>Set up your replies, follow-up system and sales routine once—then use them every day your business receives an inquiry.</p><a class="button" href="https://selar.com/ro2j22717c">Get the Sales Engine for ₦9,900 <span>→</span></a><p class="microcopy">One-time payment • Guide + workbook • Instant digital access</p></div></section>
-  </main>
-  <footer class="footer"><div class="wrap">© <span id="year"></span> Reply &amp; Close. The 24/7 Vendor Sales Engine.</div></footer>
-  <div class="sticky" id="sticky-cta" aria-label="Quick checkout">
-    <div class="sticky-inner">
-      <div class="sticky-product"><strong>The 24/7 Vendor Sales Engine</strong><span>Guide + workbook</span></div>
-      <div class="sticky-price">₦9,900</div>
-      <a class="button" href="https://selar.com/ro2j22717c">Get Instant Access <span>→</span></a>
-      <button class="sticky-dismiss" id="sticky-dismiss" type="button" aria-label="Dismiss quick checkout">×</button>
+        <div class="inside-panels">
+          <div class="inside-panel is-active" id="panel-core" role="tabpanel" aria-labelledby="tab-core">
+            <div class="inside-images">
+              <button type="button" class="lightbox-trigger" data-full="assets/workbook-p3.png" data-alt="Workbook page for the Business Snapshot, recording prices, delivery and payment details">
+                <picture><source srcset="assets/workbook-p3.webp" type="image/webp"><img src="assets/workbook-p3.png" alt="Workbook page for the Business Snapshot, recording prices, delivery and payment details" loading="lazy" width="455" height="643"></picture>
+              </button>
+              <button type="button" class="lightbox-trigger" data-full="assets/workbook-p6.png" data-alt="Workbook page for building Quick Replies such as price, delivery and stock">
+                <picture><source srcset="assets/workbook-p6.webp" type="image/webp"><img src="assets/workbook-p6.png" alt="Workbook page for building Quick Replies such as price, delivery and stock" loading="lazy" width="455" height="643"></picture>
+              </button>
+              <button type="button" class="lightbox-trigger" data-full="assets/workbook-p8.png" data-alt="Workbook page for the Lead Label Map">
+                <picture><source srcset="assets/workbook-p8.webp" type="image/webp"><img src="assets/workbook-p8.png" alt="Workbook page for the Lead Label Map" loading="lazy" width="455" height="643"></picture>
+              </button>
+              <button type="button" class="lightbox-trigger" data-full="assets/workbook-p9.png" data-alt="Workbook page for the Follow-Up Sequence Planner and Daily Inquiry Tracker">
+                <picture><source srcset="assets/workbook-p9.webp" type="image/webp"><img src="assets/workbook-p9.png" alt="Workbook page for the Follow-Up Sequence Planner and Daily Inquiry Tracker" loading="lazy" width="455" height="643"></picture>
+              </button>
+            </div>
+            <p class="inside-caption">Business Snapshot, Quick Reply Builder, Lead Label Map, Follow-Up Sequence Planner and Daily Inquiry Tracker.</p>
+          </div>
+
+          <div class="inside-panel" id="panel-growth" role="tabpanel" aria-labelledby="tab-growth">
+            <div class="inside-images">
+              <button type="button" class="lightbox-trigger" data-full="assets/workbook-p12.png" data-alt="Workbook page showing growth tools including the Order and Trust Message Kit">
+                <picture><source srcset="assets/workbook-p12.webp" type="image/webp"><img src="assets/workbook-p12.png" alt="Workbook page showing growth tools including the Order and Trust Message Kit" loading="lazy" width="455" height="643"></picture>
+              </button>
+            </div>
+            <p class="inside-caption">Five growth tools, including the Order and Trust Message Kit and the 7-Day Status Selling Plan.</p>
+          </div>
+
+          <div class="inside-panel" id="panel-guide" role="tabpanel" aria-labelledby="tab-guide">
+            <div class="inside-images">
+              <button type="button" class="lightbox-trigger" data-full="assets/guide-p1.png" data-alt="Cover of the Sales Guide">
+                <picture><source srcset="assets/guide-p1.webp" type="image/webp"><img src="assets/guide-p1.png" alt="Cover of the Sales Guide" loading="lazy" width="455" height="643"></picture>
+              </button>
+              <button type="button" class="lightbox-trigger" data-full="assets/guide-p8.png" data-alt="A page from the Sales Guide on replying to buyer messages with clarity">
+                <picture><source srcset="assets/guide-p8.webp" type="image/webp"><img src="assets/guide-p8.png" alt="A page from the Sales Guide on replying to buyer messages with clarity" loading="lazy" width="455" height="643"></picture>
+              </button>
+              <button type="button" class="lightbox-trigger" data-full="assets/guide-p9.png" data-alt="A page from the Sales Guide on following up with buyers and closing the sale">
+                <picture><source srcset="assets/guide-p9.webp" type="image/webp"><img src="assets/guide-p9.png" alt="A page from the Sales Guide on following up with buyers and closing the sale" loading="lazy" width="455" height="643"></picture>
+              </button>
+            </div>
+            <p class="inside-caption">A short Guide in six chapters that explains how to capture, reply, follow up and close.</p>
+          </div>
+
+          <div class="inside-panel" id="panel-copy" role="tabpanel" aria-labelledby="tab-copy">
+            <div class="inside-images">
+              <button type="button" class="lightbox-trigger" data-full="assets/workbook-p17.png" data-alt="Workbook page with a copy-and-paste reply library for buyers and objections">
+                <picture><source srcset="assets/workbook-p17.webp" type="image/webp"><img src="assets/workbook-p17.png" alt="Workbook page with a copy-and-paste reply library for buyers and objections" loading="lazy" width="455" height="643"></picture>
+              </button>
+            </div>
+            <p class="inside-caption">Ready-to-use replies for buyers, objections, follow-ups, order updates, Instagram handoffs and Status posts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS: enable only with real, permitted buyer quotes -->
+
+  <!-- ===== Price band ===== -->
+  <section class="price-band" id="buy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Get instant access</span>
+        <h2>Get the Guide and Workbook</h2>
+      </div>
+      <div class="price-band-row">
+        <span class="price-now" data-field="price">₦2,500</span>
+        <span class="price-was" data-field="was-price-wrap">Previously <del data-field="was-price">₦9,900</del></span>
+      </div>
+      <a class="btn cta-link" href="TODO:SELAR_URL" data-cta="price-band">Get Instant Access</a>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions, answered</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>What exactly is it?</summary>
+          <p>A Sales Guide and a fillable Workbook (two PDFs, 34 pages in total) that give you a simple system for replying to buyers, labelling leads and following up in WhatsApp and Instagram.</p>
+        </details>
+        <details>
+          <summary>What is it not?</summary>
+          <p>It is not a bot, an app or a promise of sales. It is a system you set up and use yourself. Results depend on your business, your product and how consistently you use it.</p>
+        </details>
+        <details>
+          <summary>How does delivery work?</summary>
+          <p>After payment, Selar sends your download link to the email you paid with. TODO: confirm that the link arrives instantly.</p>
+        </details>
+        <details>
+          <summary>Can I fill it in on my phone?</summary>
+          <p>The Workbook has fillable fields. TODO: confirm which phone viewer works best, then say so here. You can also print it.</p>
+        </details>
+        <details>
+          <summary>Do I need to use AI?</summary>
+          <p>No. The system works without it. One chapter shows how to use AI as a draft assistant, with you approving every reply.</p>
+        </details>
+        <details>
+          <summary>Will it work for my kind of business?</summary>
+          <p>It is built for anyone who handles buyer messages in WhatsApp or Instagram, whether you sell products or services.</p>
+        </details>
+        <details>
+          <summary>What is the refund policy?</summary>
+          <p>Because the files are delivered instantly, all purchases are final. If a file will not open, you did not receive your link, or you were charged twice in error, contact us and we will fix it. See the full <a href="refund.html">refund policy</a>.</p>
+        </details>
+        <details>
+          <summary>What if I lose my download link?</summary>
+          <p>Search your email for the Selar receipt, or contact us with the email you paid with and we will help you get your files.</p>
+        </details>
+        <details>
+          <summary>Is there an app?</summary>
+          <p>After you get your files you will see an optional app that keeps your follow-ups for you. The Guide and Workbook work fully on their own.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Final CTA ===== -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>Start replying faster today.</h2>
+      <div class="price-row">
+        <span class="price-now" data-field="price">₦2,500</span>
+        <span class="price-was" data-field="was-price-wrap">Previously <del data-field="was-price">₦9,900</del></span>
+      </div>
+      <a class="btn cta-link" href="TODO:SELAR_URL" data-cta="final">Get Instant Access</a>
+      <p class="price-note">One-time payment. Instant download.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="brand" style="color:#F6F4EC">
+      <span class="brand-mark">R</span>
+      <span>Reply &amp; Close</span>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:TODO:SUPPORT_EMAIL" class="support-email-link">Contact</a>
+      <a href="#" class="whatsapp-link" style="display:none">WhatsApp</a>
+      <a href="refund.html">Refund policy</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
     </div>
   </div>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <div class="wrap">
+    <p class="footer-fine">Digital products for organising sales conversations. No sales are guaranteed. Payments are processed by Selar.</p>
+  </div>
+</footer>
 
-    document.querySelectorAll('a[href="https://selar.com/ro2j22717c"]').forEach(function (checkoutLink) {
-      checkoutLink.addEventListener('click', function () {
-        if (typeof window.fbq === 'function') {
-          window.fbq('track', 'InitiateCheckout', {
-            content_name: 'The 24/7 Vendor Sales Engine',
-            value: 9900,
-            currency: 'NGN'
-          });
-        }
-      });
-    });
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged page preview">
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
-    (function () {
-      var lockKey = 'priceLockExpiry';
-      var dismissKey = 'stickyCtaDismissed';
-      var lockDuration = 15 * 60 * 1000;
-      var sticky = document.getElementById('sticky-cta');
-      var dismiss = document.getElementById('sticky-dismiss');
-      var hero = document.querySelector('.hero');
-      var priceBlock = document.querySelector('.price-block');
-      var timer = document.createElement('div');
-      var announcement = document.querySelector('.announcement');
-      var offerTimer;
-      var dismissed = false;
-      var expiry;
+<!-- Meta Pixel Code (loaded by script.js only if META_PIXEL_ID is set) -->
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2324842898318551&ev=PageView&noscript=1" alt="">
+</noscript>
 
-      timer.className = 'price-lock';
-      timer.id = 'price-lock-timer';
-      timer.setAttribute('role', 'status');
-      timer.setAttribute('aria-live', 'polite');
-      priceBlock.appendChild(timer);
-      announcement.innerHTML = '<span class="offer-kicker">Launch price</span><span class="offer-original">₦15,000</span><span class="offer-arrow">→</span><strong class="offer-current">₦9,900</strong><span class="offer-saving">Save ₦5,100</span><span class="announcement-timer" aria-live="polite"></span>';
-      offerTimer = announcement.querySelector('.announcement-timer');
-
-      try {
-        expiry = Number(sessionStorage.getItem(lockKey));
-        if (!expiry) {
-          expiry = Date.now() + lockDuration;
-          sessionStorage.setItem(lockKey, String(expiry));
-        }
-        dismissed = sessionStorage.getItem(dismissKey) === 'true';
-      } catch (error) {
-        expiry = Date.now() + lockDuration;
-      }
-
-      function renderTimer() {
-        var remaining = expiry - Date.now();
-        if (remaining <= 0) {
-          timer.textContent = 'Price lock window closed — current price still applies';
-          offerTimer.textContent = 'Price lock closed';
-          timer.classList.add('is-closed');
-          return true;
-        }
-        var minutes = Math.floor(remaining / 60000);
-        var seconds = Math.floor((remaining % 60000) / 1000);
-        var countdownText = 'Price locks in ' + minutes + ':' + String(seconds).padStart(2, '0');
-        timer.textContent = countdownText;
-        offerTimer.textContent = countdownText;
-        return false;
-      }
-
-      if (!renderTimer()) {
-        var countdown = setInterval(function () {
-          if (renderTimer()) clearInterval(countdown);
-        }, 1000);
-      }
-
-      function updateSticky() {
-        if (!hero || dismissed) return;
-        var pastHero = window.scrollY >= hero.offsetTop + hero.offsetHeight;
-        sticky.classList.toggle('is-visible', pastHero);
-        document.body.classList.toggle('has-sticky-cta', pastHero);
-      }
-
-      dismiss.addEventListener('click', function () {
-        dismissed = true;
-        sticky.classList.remove('is-visible');
-        document.body.classList.remove('has-sticky-cta');
-        try { sessionStorage.setItem(dismissKey, 'true'); } catch (error) {}
-      });
-
-      window.addEventListener('scroll', updateSticky, { passive: true });
-      window.addEventListener('resize', updateSticky);
-      updateSticky();
-    }());
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
-
