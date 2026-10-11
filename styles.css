@@ -282,6 +282,7 @@ img {
 .hero-covers img {
   position: absolute;
   width: 52%;
+  height: auto;
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
@@ -522,6 +523,7 @@ section {
 
 .inside-images img {
   width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 
