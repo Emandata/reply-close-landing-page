@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="The 24/7 Sales Engine App - the practical companion to your Sales Engine Guide.">
   <title>The 24/7 Sales Engine App</title>
+  <!-- Meta Pixel: tracks page views and the app-offer events below. -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2324842898318551');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+      content_name: 'Sales Engine App — Lifetime Access',
+      content_type: 'product',
+      value: 25000,
+      currency: 'NGN'
+    });
+  </script>
   <style>
     :root { --ink:#073d30; --green:#0b9c58; --green-dark:#075b38; --mint:#e7f5ea; --cream:#fbfaf5; --paper:#fffefb; --line:#d9e9dc; --muted:#597268; --gold:#f4af20; --shadow:0 26px 64px rgba(7,61,48,.12); }
     * { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; color:var(--ink); background:var(--cream); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; } a { color:inherit; text-decoration:none; } .wrap { width:min(1080px,calc(100% - 40px)); margin:0 auto; } .serif { font-family:Georgia,"Times New Roman",serif; letter-spacing:-.045em; } .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
@@ -22,12 +38,13 @@
   </style>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2324842898318551&ev=PageView&noscript=1"></noscript>
   <!-- Checkout is deliberately not connected yet. Replace #checkout after the Paystack flow is ready. -->
   <div class="notice">Your 24/7 Sales Engine Guide is already yours. Now make it easier to use every day.</div>
   <header class="wrap nav"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>Reply &amp; Close</span></a><span class="nav-note">Optional software upgrade · Lifetime access</span></header>
 
   <main>
-    <section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><div class="eyebrow">Optional app upgrade · Lifetime access</div><h1 class="serif">Pair your Guide with the Sales Engine App.</h1><p>The Guide gives you the system. <strong>The app gives you one clear place to run it</strong> — organise enquiries, see who needs attention, and keep your sales routine moving.</p><div class="price-row"><strong>₦25,000</strong><span>one payment · lifetime access</span></div><a class="button" href="https://paystack.shop/pay/bzm-u125xz">Get the Sales Engine App <span>→</span></a><div class="micro">No subscription · Access the app on your phone or computer</div></div><div class="phone-stage"><figure class="hero-photo"><img src="assets/sales-engine-app-hero.png" alt="A business owner using the Sales Engine App on her phone"></figure></div></div></section>
+    <section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><div class="eyebrow">Optional app upgrade · Lifetime access</div><h1 class="serif">Pair your Guide with the Sales Engine App.</h1><p>The Guide gives you the system. <strong>The app gives you one clear place to run it</strong> — organise enquiries, see who needs attention, and keep your sales routine moving.</p><div class="price-row"><strong>₦25,000</strong><span>one payment · lifetime access</span></div><a class="button app-checkout" href="https://paystack.shop/pay/bzm-u125xz">Get the Sales Engine App <span>→</span></a><div class="micro">No subscription · Access the app on your phone or computer</div></div><div class="phone-stage"><figure class="hero-photo"><img src="assets/sales-engine-app-hero.png" alt="A business owner using the Sales Engine App on her phone"></figure></div></div></section>
 
     <section><div class="wrap"><div class="section-head"><div class="eyebrow">A look inside</div></div><div class="interactive-showcase" data-gallery>
       <div class="gallery-screen"><img id="gallery-image" src="assets/gallery-today.png" alt="The Sales Engine App Today screen showing the value in open enquiries and quotes"></div>
@@ -44,7 +61,7 @@
 
     <section><div class="wrap faq"><div class="eyebrow">Common questions</div><h2 class="serif">Before you add the app.</h2><details><summary>How do the Guide and the app work together?</summary><p>The Guide teaches you the reply, label and follow-up system. The app is the workspace for running that system more easily as your business gets busier.</p></details><details><summary>Is this another PDF?</summary><p>No. The Sales Engine App is a web app: a practical space you can open whenever you need to manage enquiries and follow-ups.</p></details><details><summary>Will I still own the Guide + Workbook?</summary><p>Yes. Your existing Guide and Workbook stay yours. The app sits above them as the more practical, everyday version.</p></details><details><summary>Can I use it from my phone?</summary><p>Yes. The app is designed to be useful from a phone as well as a computer.</p></details></div></section>
 
-    <section class="offer" id="checkout"><div class="wrap"><div class="offer-card"><div><div class="eyebrow">Founder lifetime access</div><h2 class="serif">Make your Sales Engine easier to run every day.</h2><p>One payment for access to the app that turns your reply, lead-label and follow-up system into a more practical daily workspace.</p></div><div class="offer-price"><strong>₦25,000</strong><span>One payment · Lifetime access</span><a class="button" href="https://paystack.shop/pay/bzm-u125xz">Get the Sales Engine App <span>→</span></a></div></div></div></section>
+    <section class="offer" id="checkout"><div class="wrap"><div class="offer-card"><div><div class="eyebrow">Founder lifetime access</div><h2 class="serif">Make your Sales Engine easier to run every day.</h2><p>One payment for access to the app that turns your reply, lead-label and follow-up system into a more practical daily workspace.</p></div><div class="offer-price"><strong>₦25,000</strong><span>One payment · Lifetime access</span><a class="button app-checkout" href="https://paystack.shop/pay/bzm-u125xz">Get the Sales Engine App <span>→</span></a></div></div></div></section>
   </main>
   <footer>© 2026 Reply &amp; Close · The 24/7 Sales Engine App</footer>
   <script>
@@ -61,6 +78,18 @@
           image.alt = tab.dataset.alt;
           title.textContent = tab.dataset.title;
           caption.textContent = tab.dataset.caption;
+        });
+      });
+
+      document.querySelectorAll('.app-checkout').forEach((button) => {
+        button.addEventListener('click', () => {
+          if (typeof fbq !== 'function') return;
+          fbq('track', 'InitiateCheckout', {
+            content_name: 'Sales Engine App — Lifetime Access',
+            content_type: 'product',
+            value: 25000,
+            currency: 'NGN'
+          });
         });
       });
     })();
