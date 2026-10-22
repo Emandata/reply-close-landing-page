@@ -1,0 +1,90 @@
+const {
+  GUIDE_AMOUNT_KOBO,
+  GUIDE_PRODUCT,
+  createReference,
+  getSecretKey,
+  json,
+  siteUrl,
+} = require('../../lib/paystack');
+
+function clean(value, limit) {
+  return typeof value === 'string' ? value.trim().slice(0, limit) : '';
+}
+
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed.' });
+
+  const email = clean(req.body && req.body.email, 254).toLowerCase();
+  const confirmEmail = clean(req.body && req.body.confirmEmail, 254).toLowerCase();
+  const firstName = clean(req.body && req.body.firstName, 80);
+  const businessType = clean(req.body && req.body.businessType, 80);
+  const businessTypeOther = clean(req.body && req.body.businessTypeOther, 80);
+  const weeklyEnquiries = clean(req.body && req.body.weeklyEnquiries, 30);
+  const whatsAppNumber = clean(req.body && req.body.whatsAppNumber, 30);
+  const replyPain = clean(req.body && req.body.replyPain, 500);
+  const permittedBusinessTypes = new Set([
+    'Food & foodstuff',
+    'Fashion & clothing',
+    'Beauty, perfumes & skincare',
+    'Hair & wigs',
+    'Phones & gadgets',
+    'Home & household',
+    'Services',
+    'Courses or digital products',
+    'Other',
+  ]);
+  const permittedWeeklyVolumes = new Set(['Under 10', '10–30', '30–100', '100+']);
+  const resolvedBusinessType = businessType === 'Other' ? businessTypeOther : businessType;
+  if (
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email !== confirmEmail ||
+    !permittedBusinessTypes.has(businessType) || !resolvedBusinessType || !permittedWeeklyVolumes.has(weeklyEnquiries)
+  ) {
+    return json(res, 400, { error: 'Please complete every field with valid details.' });
+  }
+
+  const secretKey = getSecretKey();
+  if (!secretKey) {
+    return json(res, 503, { error: 'Checkout is not configured yet. Please try again shortly.' });
+  }
+
+  const reference = createReference('guide');
+  const origin = siteUrl(req);
+  const transaction = {
+    email,
+    amount: String(GUIDE_AMOUNT_KOBO),
+    currency: 'NGN',
+    reference,
+    callback_url: `${origin}/payment-return.html`,
+    metadata: JSON.stringify({
+      product: GUIDE_PRODUCT,
+      purchase_kind: 'guide',
+      customer_email: email,
+      first_name: firstName,
+      business_type: resolvedBusinessType,
+      weekly_enquiries: weeklyEnquiries,
+      whatsapp_number: whatsAppNumber,
+      replying_pain_point: replyPain,
+      cancel_action: `${origin}/checkout.html`,
+    }),
+  };
+
+  try {
+    const response = await fetch('https://api.paystack.co/transaction/initialize', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${secretKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(transaction),
+    });
+    const result = await response.json();
+
+    if (!response.ok || !result.status || !result.data || !result.data.authorization_url) {
+      return json(res, 502, { error: 'We could not start secure checkout. Please try again.' });
+    }
+
+    return json(res, 200, { authorizationUrl: result.data.authorization_url });
+  } catch (error) {
+    return json(res, 502, { error: 'We could not reach secure checkout. Please try again.' });
+  }
+};

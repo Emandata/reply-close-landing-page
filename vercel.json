@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/guide-download.js": {
+      "includeFiles": "private/**"
+    }
+  }
+}
