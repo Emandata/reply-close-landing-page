@@ -64,6 +64,12 @@ module.exports = async (req, res) => {
       weekly_enquiries: weeklyEnquiries,
       whatsapp_number: whatsAppNumber,
       replying_pain_point: replyPain,
+      custom_fields: [
+        { display_name: 'What they sell', variable_name: 'business_type', value: resolvedBusinessType },
+        { display_name: 'Weekly messages or orders', variable_name: 'weekly_enquiries', value: weeklyEnquiries },
+        ...(whatsAppNumber ? [{ display_name: 'WhatsApp number', variable_name: 'whatsapp_number', value: whatsAppNumber }] : []),
+        ...(replyPain ? [{ display_name: 'Biggest sales challenge', variable_name: 'replying_pain_point', value: replyPain }] : []),
+      ],
       cancel_action: `${origin}/checkout.html`,
     }),
   };
