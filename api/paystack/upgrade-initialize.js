@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
         weekly_enquiries: guideMetadata.weekly_enquiries || '',
         whatsapp_number: guideMetadata.whatsapp_number || '',
         replying_pain_point: guideMetadata.replying_pain_point || '',
-        cancel_action: `${origin}/guide-access.html?reference=${encodeURIComponent(guidePayment.reference)}`,
+        cancel_action: `${origin}/upsell.html?reference=${encodeURIComponent(guidePayment.reference)}`,
       }),
     };
 
