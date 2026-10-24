@@ -4,6 +4,7 @@ const {
   createReference,
   getSecretKey,
   json,
+  requestIp,
   siteUrl,
 } = require('../../lib/paystack');
 
@@ -22,6 +23,10 @@ module.exports = async (req, res) => {
   const weeklyEnquiries = clean(req.body && req.body.weeklyEnquiries, 30);
   const whatsAppNumber = clean(req.body && req.body.whatsAppNumber, 30);
   const replyPain = clean(req.body && req.body.replyPain, 500);
+  const fbp = clean(req.body && req.body.fbp, 500);
+  const fbc = clean(req.body && req.body.fbc, 500);
+  const eventSourceUrl = clean(req.body && req.body.eventSourceUrl, 2000);
+  const clientUserAgent = clean(req.body && req.body.clientUserAgent, 1000);
   const permittedBusinessTypes = new Set([
     'Food & foodstuff',
     'Fashion & clothing',
@@ -64,6 +69,11 @@ module.exports = async (req, res) => {
       weekly_enquiries: weeklyEnquiries,
       whatsapp_number: whatsAppNumber,
       replying_pain_point: replyPain,
+      fbp,
+      fbc,
+      event_source_url: eventSourceUrl || `${origin}/checkout.html`,
+      client_ip_address: requestIp(req),
+      client_user_agent: clientUserAgent || String(req.headers['user-agent'] || '').slice(0, 1000),
       custom_fields: [
         { display_name: 'What they sell', variable_name: 'business_type', value: resolvedBusinessType },
         { display_name: 'Weekly messages or orders', variable_name: 'weekly_enquiries', value: weeklyEnquiries },
