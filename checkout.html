@@ -27,5 +27,33 @@
   <script>
     (()=>{const form=document.querySelector('#checkout-form'),button=document.querySelector('#pay-button'),message=document.querySelector('#form-message'),price=document.querySelector('#guide-price'),email=form.elements.email,confirmEmail=form.elements.confirmEmail,businessType=form.elements.businessType,otherBusiness=form.elements.businessTypeOther,otherBusinessWrap=document.querySelector('#other-business-wrap'),formatNaira=value=>'₦'+Number(value).toLocaleString('en-NG');fetch('/api/paystack/config').then(response=>response.ok?response.json():null).then(result=>{if(result&&result.guidePrice)price.textContent=formatNaira(result.guidePrice)}).catch(()=>{});const syncEmailConfirmation=()=>{confirmEmail.setCustomValidity(confirmEmail.value&&email.value.trim().toLowerCase()!==confirmEmail.value.trim().toLowerCase()?'Email addresses must match.':'')};const syncOtherBusiness=()=>{const isOther=businessType.value==='Other';otherBusinessWrap.classList.toggle('is-hidden',!isOther);otherBusiness.required=isOther;if(!isOther)otherBusiness.value=''};email.addEventListener('input',syncEmailConfirmation);confirmEmail.addEventListener('input',syncEmailConfirmation);businessType.addEventListener('change',syncOtherBusiness);form.addEventListener('submit',async event=>{event.preventDefault();message.classList.remove('is-visible');syncEmailConfirmation();syncOtherBusiness();if(!form.reportValidity())return;button.disabled=true;button.textContent='Opening secure payment…';try{const response=await fetch('/api/paystack/initialize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(form)))}),result=await response.json();if(!response.ok||!result.authorizationUrl)throw new Error(result.error||'We could not start secure checkout.');window.location.assign(result.authorizationUrl)}catch(error){message.textContent=error.message||'Secure checkout could not open. Please try again.';message.classList.add('is-visible');button.disabled=false;button.textContent='Continue to secure payment →'}})})();
   </script>
+  <script>
+    // Run in the capture phase so these values are present before checkout's submit handler reads the form.
+    (() => {
+      const form = document.querySelector('#checkout-form');
+      if (!form) return;
+      const cookie = name => (document.cookie.split('; ').find(item => item.startsWith(`${name}=`)) || '').slice(name.length + 1);
+      const put = (name, value) => {
+        let input = form.querySelector(`input[name="${name}"]`);
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = name;
+          form.appendChild(input);
+        }
+        input.value = value || '';
+      };
+      form.addEventListener('submit', () => {
+        const fbp = cookie('_fbp');
+        const existingFbc = cookie('_fbc');
+        const fbclid = new URLSearchParams(location.search).get('fbclid');
+        const fbc = existingFbc || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : '');
+        put('fbp', fbp);
+        put('fbc', fbc);
+        put('eventSourceUrl', location.href);
+        put('clientUserAgent', navigator.userAgent);
+      }, true);
+    })();
+  </script>
 </body>
 </html>
