@@ -36,7 +36,7 @@
         if(!response.ok||!result.paid)throw new Error(result.error||'We could not confirm this payment yet.');
         const pixelKey='salesEnginePurchase:'+reference;
         if(!sessionStorage.getItem(pixelKey)&&typeof fbq==='function'){
-          fbq('track','Purchase',{value:result.amountNaira,currency:'NGN',content_name:result.kind==='app_upgrade'?'Sales Engine App upgrade':'24/7 Sales Engine Guide + Interactive Workbook',content_type:'product'},{eventID:reference});
+          fbq('track','Purchase',{value:result.amountNaira,currency:'NGN',content_name:result.kind==='app'?'Sales Engine App':result.kind==='app_upgrade'?'Sales Engine App upgrade':'24/7 Sales Engine Guide + Interactive Workbook',content_type:'product'},{eventID:reference});
           sessionStorage.setItem(pixelKey,'1');
         }
         if(result.kind==='app'){

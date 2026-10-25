@@ -151,11 +151,6 @@
     document.querySelectorAll('a[href="checkout.html"]').forEach(function (checkoutLink) {
       var fbclid = new URLSearchParams(window.location.search).get('fbclid');
       if (fbclid) checkoutLink.href = 'checkout.html?fbclid=' + encodeURIComponent(fbclid);
-      checkoutLink.addEventListener('click', function () {
-        if (typeof window.fbq === 'function') {
-          window.fbq('track', 'Lead', { content_name: 'Free 24/7 Sales Engine Guide + Workbook' });
-        }
-      });
     });
 
     (function () {
