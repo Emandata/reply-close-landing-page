@@ -3,7 +3,7 @@
     "api/guide-download.js": {
       "includeFiles": "private/**"
     },
-    "api/free-guide/download.js": {
+    "api/free-guide/[action].js": {
       "includeFiles": "private/**"
     }
   }
