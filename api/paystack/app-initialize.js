@@ -56,7 +56,11 @@ module.exports = async (req, res) => {
       body: JSON.stringify(transaction),
     });
     const result = await response.json();
-    if (!response.ok || !result.status || !result.data || !result.data.authorization_url) return json(res, 502, { error: 'We could not start secure checkout. Please try again.' });
+    if (!response.ok || !result.status || !result.data || !result.data.authorization_url) {
+      const reason = clean(result && result.message, 180) || 'Paystack could not start secure checkout.';
+      console.error('Paystack App checkout initialization failed.', { status: response.status, reason });
+      return json(res, 502, { error: reason });
+    }
     return json(res, 200, { authorizationUrl: result.data.authorization_url });
   } catch (error) {
     return json(res, 502, { error: 'We could not reach secure checkout. Please try again.' });
