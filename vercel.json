@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/free-guide/:action",
+      "destination": "/api/free-guide?action=:action"
+    }
+  ],
+  "functions": {
+    "api/guide-download.js": {
+      "includeFiles": "private/**"
+    },
+    "api/free-guide.js": {
+      "includeFiles": "private/**"
+    }
+  }
+}
