@@ -40,7 +40,7 @@
           sessionStorage.setItem(pixelKey,'1');
         }
         if(result.kind==='app'){
-          fetch('/api/free-guide/app-payment-complete',{
+          fetch('/api/free-guide?action=app-payment-complete',{
             method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
             body:JSON.stringify({reference})
           }).catch(()=>{});
