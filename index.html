@@ -188,5 +188,22 @@
       updateSticky();
     }());
   </script>
+  <script>
+    // Direct-download launch: avoid promising an email before a sending domain exists.
+    document.querySelectorAll('.microcopy').forEach(item => {
+      if (item.textContent.includes('Free by email')) item.textContent = 'Guide + interactive workbook • Instant download • No card needed';
+      if (item.textContent.includes('Download link included')) item.textContent = 'Free instant download • No card needed';
+    });
+    const bundle = document.querySelector('#free-bundle');
+    if (bundle) {
+      bundle.querySelector('.price-note').textContent = 'No card needed · Download it right away';
+      bundle.querySelector('.button').innerHTML = 'Get the free bundle <span>→</span>';
+      bundle.querySelector('.secure').textContent = 'No card required · Instant download';
+    }
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (item.querySelector('h3')?.textContent === 'What exactly will I receive?') item.querySelector('p').textContent = 'You receive the free digital Guide and Interactive Workbook as an instant download.';
+      if (item.querySelector('h3')?.textContent === 'When do I get access?') item.querySelector('p').textContent = 'Complete the short form, see the App offer, then download your files immediately. No card is needed.';
+    });
+  </script>
 </body>
 </html>
