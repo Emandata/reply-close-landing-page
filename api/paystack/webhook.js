@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const { getSecretKey, json, requestIp, siteUrl, verifyPurchaseTransaction } = require('../../lib/paystack');
-const { sendGuidePurchase } = require('../../lib/meta-capi');
+const { sendPurchase } = require('../../lib/meta-capi');
+const { markAppPaymentConfirmed } = require('../../lib/free-guide-leads');
 
 // Paystack supports one webhook URL. This endpoint reports Guide purchases to Meta,
 // then relays App-upgrade events to the existing Lovable entitlement webhook.
@@ -54,16 +55,36 @@ module.exports = async (req, res) => {
 
     if (payment.kind === 'guide') {
       // Best effort: CAPI failure is logged inside this helper and never rejects the payment.
-      await sendGuidePurchase(payment, {
+      await sendPurchase(payment, {
         clientIp: requestIp(req),
         clientUserAgent: String(req.headers['user-agent'] || ''),
         eventSourceUrl: `${siteUrl(req)}/payment-return.html`,
       });
     }
 
-    if (payment.kind === 'app_upgrade') {
+    if (payment.kind === 'app') {
       // Preserve the existing App-unlock flow after moving Paystack's single webhook here.
       await relayUpgrade(rawBody, signature);
+      // Record the paid status for free-funnel buyers even when they close the browser
+      // before the return page loads. This must never affect App access or Paystack retries.
+      if (payment.metadata && payment.metadata.free_guide_claim === true) {
+        try {
+          const saved = await markAppPaymentConfirmed({
+            signupId: payment.metadata.free_guide_claim_id,
+            email: payment.customer && payment.customer.email,
+            confirmedAt: payment.paidAt,
+          });
+          if (!saved.ok && !saved.configurationError) console.error('Free Guide App payment could not be recorded.');
+        } catch (error) {
+          console.error('Free Guide App payment tracking failed.', { error: error && error.message });
+        }
+      }
+      // Meta is deliberately after the entitlement forward: it can never delay App access.
+      await sendPurchase(payment, {
+        clientIp: requestIp(req),
+        clientUserAgent: String(req.headers['user-agent'] || ''),
+        eventSourceUrl: `${siteUrl(req)}/payment-return.html`,
+      });
     }
 
     return json(res, 200, { received: true });
