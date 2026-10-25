@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { createGuideToken, GUIDE_FILE_NAME, sendGuideEmail, verifyGuideToken } = require('../lib/free-guide');
 const { json, siteUrl, verifyPurchaseTransaction } = require('../lib/paystack');
-const { claimId, createSignup, findAwaitingAppPaymentByEmail, listSignups, updateSignup } = require('../lib/free-guide-leads');
+const { claimId, createSignup, listSignups, markAppPaymentConfirmed, updateSignup } = require('../lib/free-guide-leads');
 
 const BUSINESS_TYPES = new Set([
   'Food and drinks', 'Fashion, shoes and bags', 'Beauty, skincare, hair and perfumes',
@@ -124,14 +124,8 @@ async function appPaymentComplete(req, res) {
     const email = payment && payment.customer && payment.customer.email;
     const signupId = payment && payment.metadata && payment.metadata.free_guide_claim_id;
     if (!payment.ok || payment.kind !== 'app') return json(res, 200, { saved: false });
-    if (signupId) {
-      await updateSignup(signupId, { app_payment_confirmed_at: new Date().toISOString() });
-    } else {
-      const signup = await findAwaitingAppPaymentByEmail(email);
-      if (!signup.ok || !signup.row) return json(res, 200, { saved: false });
-      await updateSignup(signup.row.id, { app_payment_confirmed_at: new Date().toISOString() });
-    }
-    return json(res, 200, { saved: true });
+    const saved = await markAppPaymentConfirmed({ signupId, email, confirmedAt: payment.paidAt });
+    return json(res, 200, { saved: Boolean(saved.ok) });
   } catch (error) {
     console.error('Free Guide App-payment confirmation could not be stored.', { error: error && error.message });
     return json(res, 200, { saved: false });
