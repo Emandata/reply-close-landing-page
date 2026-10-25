@@ -43,13 +43,17 @@ async function claim(req, res) {
       whatsapp_number: whatsAppNumber || null, whatsapp_contact_consent: Boolean(whatsAppNumber),
     });
     if (!stored.ok && !stored.configurationError) console.error('Free Guide signup was not stored.', { email });
-    const delivery = await sendGuideEmail({ email, accessUrl });
-    if (delivery.configurationError) return json(res, 503, { error: 'Free Guide email is not configured yet. Please try again shortly.' });
-    if (!delivery.ok) {
-      console.error('Free Guide email failed.', { status: delivery.status, body: delivery.body });
-      return json(res, 502, { error: 'We could not send your Guide email yet. Please try again.' });
+    // Direct-download mode works before email delivery is configured. Once Resend
+    // is added later, the same request also emails the buyer their private link.
+    const emailConfigured = Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
+    if (emailConfigured) {
+      const delivery = await sendGuideEmail({ email, accessUrl });
+      if (!delivery.ok) {
+        console.error('Free Guide email failed.', { status: delivery.status, body: delivery.body });
+        return json(res, 502, { error: 'We could not send your Guide email yet. Please try again.' });
+      }
     }
-    return json(res, 200, { token });
+    return json(res, 200, { token, emailed: emailConfigured });
   } catch (error) {
     console.error('Free Guide email request failed.', { error: error && error.message });
     return json(res, 502, { error: 'We could not send your Guide email yet. Please try again.' });
