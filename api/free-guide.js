@@ -5,8 +5,10 @@ const { json, siteUrl, verifyPurchaseTransaction } = require('../../lib/paystack
 const { claimId, createSignup, findAwaitingAppPaymentByEmail, listSignups, updateSignup } = require('../../lib/free-guide-leads');
 
 const BUSINESS_TYPES = new Set([
-  'Food & foodstuff', 'Fashion & clothing', 'Beauty, perfumes & skincare', 'Hair & wigs',
-  'Phones & gadgets', 'Home & household', 'Services', 'Courses or digital products', 'Other',
+  'Food and drinks', 'Fashion, shoes and bags', 'Beauty, skincare, hair and perfumes',
+  'Health and wellness products', 'Home, kitchen and cleaning products',
+  'Phones, gadgets and electronics', 'Logistics and delivery', 'Other services',
+  'Digital products and courses', 'Other',
 ]);
 const WEEKLY_VOLUMES = new Set(['', 'Under 10', '10-30', '30-100', '100+']);
 const REASONS = new Set(['Price', 'Not right now', 'Not sure it fits my business', 'I just wanted the file', 'Other']);
