@@ -39,7 +39,11 @@
           fbq('track','Purchase',{value:result.amountNaira,currency:'NGN',content_name:result.kind==='app_upgrade'?'Sales Engine App upgrade':'24/7 Sales Engine Guide + Interactive Workbook',content_type:'product'},{eventID:reference});
           sessionStorage.setItem(pixelKey,'1');
         }
-        if(result.kind==='app_upgrade'){
+        if(result.kind==='app'){
+          fetch('/api/free-guide/app-payment-complete',{
+            method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,
+            body:JSON.stringify({reference})
+          }).catch(()=>{});
           location.replace('https://sale-engine.lovable.app/thank-you?reference='+encodeURIComponent(reference));
           return;
         }

@@ -2,6 +2,9 @@
   "functions": {
     "api/guide-download.js": {
       "includeFiles": "private/**"
+    },
+    "api/free-guide/download.js": {
+      "includeFiles": "private/**"
     }
   }
 }
