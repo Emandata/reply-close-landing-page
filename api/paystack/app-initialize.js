@@ -1,5 +1,4 @@
 const {
-  APP_AMOUNT_KOBO,
   APP_PRODUCT,
   createReference,
   getSecretKey,
@@ -28,7 +27,9 @@ module.exports = async (req, res) => {
   const clientUserAgent = clean(req.body && req.body.clientUserAgent, 1000);
   const transaction = {
     email: claim.email,
-    amount: String(APP_AMOUNT_KOBO),
+    // Paystack requires an integer amount in kobo. Keeping this literal here
+    // prevents a stale shared config from ever producing an invalid amount.
+    amount: 2500000,
     currency: 'NGN',
     reference: createReference('app'),
     callback_url: `${origin}/payment-return.html`,
