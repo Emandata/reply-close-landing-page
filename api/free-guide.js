@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const { createGuideToken, GUIDE_FILE_NAME, sendGuideEmail, verifyGuideToken } = require('../../lib/free-guide');
-const { json, siteUrl, verifyPurchaseTransaction } = require('../../lib/paystack');
-const { claimId, createSignup, findAwaitingAppPaymentByEmail, listSignups, updateSignup } = require('../../lib/free-guide-leads');
+const { createGuideToken, GUIDE_FILE_NAME, sendGuideEmail, verifyGuideToken } = require('../lib/free-guide');
+const { json, siteUrl, verifyPurchaseTransaction } = require('../lib/paystack');
+const { claimId, createSignup, findAwaitingAppPaymentByEmail, listSignups, updateSignup } = require('../lib/free-guide-leads');
 
 const BUSINESS_TYPES = new Set([
   'Food and drinks', 'Fashion, shoes and bags', 'Beauty, skincare, hair and perfumes',
