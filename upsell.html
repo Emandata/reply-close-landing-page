@@ -82,4 +82,29 @@
       document.querySelectorAll('.tab').forEach(item => item.setAttribute('aria-pressed', String(item === tab)));
     }));
   </script>
+  <script>
+    // Rotate the App screens while this section is visible. The thumbnails stay
+    // available for anyone who wants to choose a specific screen themselves.
+    (() => {
+      const showcase = document.querySelector('.showcase');
+      const tabs = [...document.querySelectorAll('.tab')];
+      if (!showcase || tabs.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let timer;
+      const stop = () => { if (timer) { clearInterval(timer); timer = undefined; } };
+      const next = () => {
+        const current = Math.max(0, tabs.findIndex(tab => tab.getAttribute('aria-pressed') === 'true'));
+        tabs[(current + 1) % tabs.length].click();
+      };
+      const start = () => {
+        stop();
+        timer = setInterval(next, 4500);
+      };
+
+      tabs.forEach(tab => tab.addEventListener('click', start));
+      new IntersectionObserver(entries => {
+        entries[0].isIntersecting ? start() : stop();
+      }, { threshold: 0.45 }).observe(showcase);
+    })();
+  </script>
 </body></html>
