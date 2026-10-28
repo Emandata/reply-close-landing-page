@@ -51,10 +51,17 @@ async function claim(req, res) {
     // is added later, the same request also emails the buyer their private link.
     const emailConfigured = Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
     if (emailConfigured) {
-      const delivery = await sendGuideEmail({ email, accessUrl });
-      if (!delivery.ok) {
-        console.error('Free Guide email failed.', { status: delivery.status, body: delivery.body });
-        return json(res, 502, { error: 'We could not send your Guide email yet. Please try again.' });
+      // The browser journey must not depend on a third-party email request. The
+      // buyer gets their signed link immediately; email is only a helpful backup.
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3500);
+      try {
+        const delivery = await sendGuideEmail({ email, accessUrl, signal: controller.signal });
+        if (!delivery.ok) console.error('Free Guide email failed.', { status: delivery.status, body: delivery.body });
+      } catch (error) {
+        console.error('Free Guide email failed.', { error: error && error.message });
+      } finally {
+        clearTimeout(timeout);
       }
     }
     return json(res, 200, { token, emailed: emailConfigured });
