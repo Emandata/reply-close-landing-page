@@ -10,19 +10,24 @@
   <style>
     .decline-gate{position:fixed;z-index:20;inset:0;display:grid;place-items:center;padding:24px;background:rgba(4,40,30,.45)}.decline-gate[hidden]{display:none}.decline-card{width:min(100%,500px);padding:30px;border-radius:20px;background:#fffdf9;box-shadow:0 24px 60px rgba(0,0,0,.2)}.decline-card h2{font-size:30px;line-height:1.08}.decline-card p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.55}.decline-options{display:grid;gap:9px;margin:23px 0}.decline-choice{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;color:var(--ink);background:#fff;font-weight:800;text-align:left;cursor:pointer}.decline-choice[aria-pressed="true"]{border-color:var(--ink);background:#e7f5ea}.decline-other{width:100%;min-height:74px;padding:11px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit;resize:vertical}.decline-error{min-height:18px;color:#9d2c22;font-size:12px;font-weight:750}.decline-actions{display:flex;gap:12px;margin-top:14px}.decline-actions button{flex:1;min-height:48px;border:0;border-radius:10px;font-weight:850;cursor:pointer}.decline-cancel{color:var(--ink);background:#eef5ef}.decline-continue{color:#fff;background:var(--ink)}@media(max-width:560px){.decline-card{padding:25px 20px}.decline-actions{flex-direction:column-reverse}}
   </style>
+  <style>
+    /* The offer is a real standalone page: no server response is needed to show it. */
+    .error-screen{display:none!important}.decline{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:14px;padding:0 16px;border:1px solid #91b9a0;border-radius:10px;color:var(--ink);background:#fff;font:800 14px inherit;text-decoration:none;cursor:pointer}.decline:hover{border-color:var(--ink);background:#eff8ef}.email-gate{position:fixed;z-index:30;inset:0;display:grid;place-items:center;padding:24px;background:rgba(4,40,30,.45)}.email-gate[hidden]{display:none}.email-card{width:min(100%,440px);padding:30px;border-radius:20px;background:#fffdf9;box-shadow:0 24px 60px rgba(0,0,0,.2)}.email-card h2{font-size:29px;line-height:1.08}.email-card p{margin-top:10px;color:var(--muted);font-size:14px;line-height:1.55}.email-card label{display:block;margin-top:20px;font-size:13px;font-weight:850}.email-card input{width:100%;height:50px;margin-top:8px;padding:0 12px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit}.email-actions{display:flex;gap:12px;margin-top:16px}.email-actions button{flex:1;min-height:48px;border:0;border-radius:10px;font-weight:850;cursor:pointer}.email-cancel{color:var(--ink);background:#eef5ef}.email-continue{color:#fff;background:var(--ink)}.email-error{min-height:18px;margin-top:10px!important;color:#9d2c22!important;font-size:12px!important;font-weight:750}@media(max-width:560px){.email-card{padding:25px 20px}.email-actions{flex-direction:column-reverse}}
+  </style>
 </head>
 <body>
-  <div class="notice"><strong>Guide purchase confirmed.</strong> Before you collect your files, see the App that makes the same system easier to run.</div>
-  <header class="wrap nav"><div class="brand"><span class="brand-mark">↗</span>Reply &amp; Close</div><div class="nav-note">Your Guide + Workbook are secured</div></header>
-  <main id="main"><div class="loading" id="loading"><span class="spinner"></span>Confirming your purchase…</div><div class="error-screen wrap" id="error"><h1>We could not confirm this purchase.</h1><p id="error-copy">Please return to your payment confirmation page and try again.</p></div>
-    <div id="offer-content" hidden>
-      <section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><div class="eyebrow">Your next step · Lifetime App access</div><h1>Make your Sales Engine easier to run every day.</h1><p class="hero-summary">You already have the system. Add the App and keep your replies, leads and follow-ups in one clear workspace.</p><p class="hero-description">Your Guide payment counts toward the App. Pay the remaining balance once, then use it from your phone or computer.</p></div><div class="phone-stage"><figure class="hero-photo"><img src="assets/sales-engine-app-hero.png" alt="A business owner using the Sales Engine App on her phone"></figure></div><div class="offer hero-offer"><div class="offer-kicker">Interactive web app · Not another PDF</div><div class="price-row"><strong id="upgrade-price">₦22,500</strong><span>remaining balance</span><span class="total" id="app-total">₦25,000 total</span></div><button class="app-button app-upgrade" type="button">Unlock the App →</button><p class="checkout-message" id="checkout-message" role="alert"></p><p class="micro">One secure Paystack payment · Uses the same email as your Guide order</p><button class="decline" id="decline-hero" type="button">No thanks — continue to my Guide + Workbook files</button></div></div></section>
+  <div class="notice"><strong>Lifetime App access.</strong> See how the Sales Engine makes your selling day easier to run.</div>
+  <header class="wrap nav"><div class="brand"><span class="brand-mark">↗</span>Reply &amp; Close</div><div class="nav-note">One payment · lifetime access</div></header>
+  <main id="main"><div class="loading" id="loading" hidden><span class="spinner"></span>Preparing your offer…</div><div class="error-screen wrap" id="error"><h1>We could not confirm this purchase.</h1><p id="error-copy">Please return to the free Guide form and try again.</p></div>
+    <div id="offer-content">
+      <section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><div class="eyebrow">Your next step · Lifetime App access</div><h1>Make your Sales Engine easier to run every day.</h1><p class="hero-summary">Keep your replies, leads and follow-ups in one clear workspace.</p><p class="hero-description">One payment gives you lifetime access from your phone or computer.</p></div><div class="phone-stage"><figure class="hero-photo"><img src="assets/sales-engine-app-hero.png" alt="A business owner using the Sales Engine App on her phone"></figure></div><div class="offer hero-offer"><div class="offer-kicker">Interactive web app · Not another PDF</div><div class="price-row"><strong id="upgrade-price">₦25,000</strong><span>one payment · lifetime access</span><span class="total" id="app-total" hidden>₦25,000 total</span></div><button class="app-button app-upgrade" type="button">Get lifetime App access →</button><p class="checkout-message" id="checkout-message" role="alert"></p><p class="micro">One secure Paystack payment · No subscription</p><button class="decline" id="decline-hero" type="button">Get the free Guide + Workbook instead →</button></div></div></section>
       <section><div class="wrap"><div class="section-head"><div class="eyebrow">What changes in the App</div><h2>See how the Sales Engine makes every day easier.</h2></div><div class="showcase"><div class="screen"><img id="gallery-image" src="assets/gallery-today.png" alt="Today sales desk in the Sales Engine App"></div><div class="showcopy"><h2>See how the Sales Engine makes every day easier.</h2><h3 id="gallery-title">Today’s sales desk</h3><p id="gallery-caption">See what is sitting in open enquiries and quotes right now, including the real naira value worth following up.</p></div><div class="tabs" role="group" aria-label="App screens"><button class="tab" type="button" aria-pressed="true" data-image="assets/gallery-today.png" data-alt="Today sales desk in the Sales Engine App" data-title="Today’s sales desk" data-caption="See what is sitting in open enquiries and quotes right now, including the real naira value worth following up."><img src="assets/gallery-today.png" alt=""></button><button class="tab" type="button" aria-pressed="false" data-image="assets/gallery-leads.png" data-alt="Lead pipeline in the Sales Engine App" data-title="Lead pipeline" data-caption="New enquiry to Paid becomes a clear path the App tracks for you, instead of labels and follow-ups living in your head."><img src="assets/gallery-leads.png" alt=""></button><button class="tab" type="button" aria-pressed="false" data-image="assets/gallery-reminders.png" data-alt="Follow-up queue in the Sales Engine App" data-title="Follow-up queue" data-caption="Never lose track of a buyer who said, ‘I’ll get back to you.’ Keep the next follow-up clear and on time."><img src="assets/gallery-reminders.png" alt=""></button><button class="tab" type="button" aria-pressed="false" data-image="assets/gallery-replies.png" data-alt="Ready answers in the Sales Engine App" data-title="Your ready answers" data-caption="Save your most-asked answers once. Reuse them with one tap instead of typing the same reply over and over."><img src="assets/gallery-replies.png" alt=""></button></div></div></div></section>
       <section class="how"><div class="wrap"><div class="section-head"><div class="eyebrow">Built for your busy sales day</div><h2>The Sales Engine puts your system into action.</h2></div><div class="benefits"><article class="benefit"><h3>A clear day, every day</h3><p>See the replies, leads and follow-ups that need your attention before chats start slipping through.</p></article><article class="benefit"><h3>Every follow-up made easier</h3><p>Keep warm buyers moving with a clear next step instead of trying to remember who to message.</p></article><article class="benefit"><h3>Everything in one place</h3><p>Keep your ready replies, lead pipeline and selling rhythm together on your phone or computer.</p></article></div></div></section>
       <section><div class="wrap faq"><h2>Common questions</h2><details><summary>How do the Sales Engine App and Guide work together?</summary><p>The Guide gives you the manual sales system. The App gives you one practical place to run that same system each day.</p></details><details><summary>Is this a subscription?</summary><p>No. This is one payment for lifetime access to the App.</p></details><details><summary>Can I use the App on my phone or computer?</summary><p>Yes. The App is designed to work on both phone and computer.</p></details></div></section>
-      <section class="close"><div class="wrap"><div class="close-card"><div class="eyebrow">Make the plan easier to follow every day.</div><h2>Make your Sales Engine easier to run every day.</h2><p>Your Guide + Workbook remain yours either way. The App keeps the same system ready when the chats start coming in.</p><div class="offer"><div class="price-row"><strong id="upgrade-price-bottom">₦22,500</strong><span>remaining balance</span></div><button class="app-button app-upgrade" type="button">Unlock the App →</button><p class="micro">One secure Paystack payment · Lifetime access</p><button class="decline" id="decline-bottom" type="button">No thanks — continue to my Guide + Workbook files</button></div></div></div></section>
+      <section class="close"><div class="wrap"><div class="close-card"><div class="eyebrow">Make the plan easier to follow every day.</div><h2>Make your Sales Engine easier to run every day.</h2><p>Your Guide + Workbook remain yours either way. The App keeps the same system ready when the chats start coming in.</p><div class="offer"><div class="price-row"><strong id="upgrade-price-bottom">₦25,000</strong><span>one payment · lifetime access</span></div><button class="app-button app-upgrade" type="button">Get lifetime App access →</button><p class="micro">One secure Paystack payment · Lifetime access</p><button class="decline" id="decline-bottom" type="button">Get the free Guide + Workbook instead →</button></div></div></div></section>
     </div>
-    <div class="decline-gate" id="decline-gate" hidden role="dialog" aria-modal="true" aria-labelledby="decline-title"><div class="decline-card"><div class="eyebrow">Before your files</div><h2 id="decline-title">What held you back?</h2><p>One quick tap helps me make the App offer more useful. Your free Guide + Workbook are still yours either way.</p><div class="decline-options" role="group" aria-label="What held you back?"><button class="decline-choice" type="button" data-reason="Price" aria-pressed="false">Price</button><button class="decline-choice" type="button" data-reason="Not right now" aria-pressed="false">Not right now</button><button class="decline-choice" type="button" data-reason="Not sure it fits my business" aria-pressed="false">Not sure it fits my business</button><button class="decline-choice" type="button" data-reason="I just wanted the file" aria-pressed="false">I just wanted the file</button><button class="decline-choice" type="button" data-reason="Other" aria-pressed="false">Other</button></div><textarea class="decline-other" id="decline-other" maxlength="240" placeholder="Optional: tell me more" hidden></textarea><p class="decline-error" id="decline-error" role="alert"></p><div class="decline-actions"><button class="decline-cancel" id="decline-cancel" type="button">Go back</button><button class="decline-continue" id="decline-continue" type="button">Continue to my files →</button></div></div></div>
+    <div class="decline-gate" id="decline-gate" hidden role="dialog" aria-modal="true" aria-labelledby="decline-title"><div class="decline-card"><div class="eyebrow">Before your files</div><h2 id="decline-title">What held you back?</h2><p>One quick tap helps me make the App offer more useful. Your free Guide + Workbook are still yours either way.</p><div class="decline-options" role="group" aria-label="What held you back?"><button class="decline-choice" type="button" data-reason="Price" aria-pressed="false">Price</button><button class="decline-choice" type="button" data-reason="Not right now" aria-pressed="false">Not right now</button><button class="decline-choice" type="button" data-reason="Not sure it fits my business" aria-pressed="false">Not sure it fits my business</button><button class="decline-choice" type="button" data-reason="I just wanted the file" aria-pressed="false">I just wanted the free files</button><button class="decline-choice" type="button" data-reason="Other" aria-pressed="false">Other</button></div><textarea class="decline-other" id="decline-other" maxlength="240" placeholder="Optional: tell me more" hidden></textarea><p class="decline-error" id="decline-error" role="alert"></p><div class="decline-actions"><button class="decline-cancel" id="decline-cancel" type="button">Go back</button><button class="decline-continue" id="decline-continue" type="button">Continue to my files →</button></div></div></div>
+    <div class="email-gate" id="email-gate" hidden role="dialog" aria-modal="true" aria-labelledby="email-title"><div class="email-card"><div class="eyebrow">Secure App checkout</div><h2 id="email-title">Where should we unlock your App?</h2><p>Use the email you want to use when creating your Sales Engine App account.</p><label>Email address<input id="checkout-email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254"></label><p class="email-error" id="email-error" role="alert"></p><div class="email-actions"><button class="email-cancel" id="email-cancel" type="button">Go back</button><button class="email-continue" id="email-continue" type="button">Continue to payment →</button></div></div></div>
   </main><footer>© 2026 Reply &amp; Close · The 24/7 Sales Engine App</footer>
   <script>
     (()=>{const token=new URLSearchParams(location.search).get('token'),loading=document.querySelector('#loading'),error=document.querySelector('#error'),errorCopy=document.querySelector('#error-copy'),content=document.querySelector('#offer-content'),message=document.querySelector('#checkout-message'),price=document.querySelector('#upgrade-price'),bottomPrice=document.querySelector('#upgrade-price-bottom'),appTotal=document.querySelector('#app-total'),format=value=>`₦${Number(value).toLocaleString('en-NG')}`,allButtons=()=>document.querySelectorAll('.app-upgrade');if(!token){loading.hidden=true;errorCopy.textContent='Please return to the free Guide form and request your bundle first.';error.style.display='block';return}const applyFreeOffer=amount=>{document.querySelector('.notice').innerHTML='<strong>Your free Guide + Workbook are ready.</strong> Before you download, see the App that makes the same system easier to run.';document.querySelector('.nav-note').textContent='Your free bundle is ready';document.querySelector('.hero .eyebrow').textContent='Optional App upgrade · Lifetime access';document.querySelector('.hero h1').textContent='Pair your free Guide with the Sales Engine App.';document.querySelector('.hero-summary').textContent='The Guide gives you the system. The App turns your replies, leads and follow-ups into one practical daily workspace.';document.querySelector('.hero-description').textContent='One payment gives you lifetime access from your phone or computer.';document.querySelector('.hero .offer-kicker').textContent='Interactive web app · Not another PDF';price.textContent=format(amount);bottomPrice.textContent=format(amount);price.nextElementSibling.textContent='one payment · lifetime access';bottomPrice.nextElementSibling.textContent='one payment · lifetime access';appTotal.hidden=true;allButtons().forEach(button=>button.textContent='Get lifetime App access →');document.querySelector('#decline-bottom').textContent='No thanks — download my free Guide + Workbook';document.querySelector('.close .eyebrow').textContent='One simple upgrade';document.querySelector('.close h2').textContent='Make your Sales Engine easier to run every day.';document.querySelector('.close-card>p').textContent='Your free Guide + Workbook are yours either way. Add the App when you want the same system ready to use every day.';};document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(item=>item.setAttribute('aria-pressed',String(item===tab)));document.querySelector('#gallery-image').src=tab.dataset.image;document.querySelector('#gallery-image').alt=tab.dataset.alt;document.querySelector('#gallery-title').textContent=tab.dataset.title;document.querySelector('#gallery-caption').textContent=tab.dataset.caption;}));const openAppCheckout=async()=>{message.classList.remove('is-visible');allButtons().forEach(item=>{item.disabled=true;item.textContent='Opening secure payment…'});try{let attribution={};try{attribution=JSON.parse(sessionStorage.getItem('salesEngineAttribution')||'{}')}catch(problem){}const response=await fetch('/api/paystack/app-initialize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token,...attribution})}),result=await response.json();if(!response.ok||!result.authorizationUrl)throw new Error(result.error||'We could not start secure checkout.');if(typeof fbq==='function')fbq('track','InitiateCheckout',{content_name:'Sales Engine App',content_type:'product',value:25000,currency:'NGN'});location.assign(result.authorizationUrl)}catch(problem){message.textContent=problem.message||'Secure checkout could not open. Please try again.';message.classList.add('is-visible');allButtons().forEach(item=>{item.disabled=false;item.textContent='Get lifetime App access →'});}};allButtons().forEach(button=>button.addEventListener('click',openAppCheckout));(async()=>{try{const response=await fetch('/api/free-guide/verify?token='+encodeURIComponent(token)),result=await response.json();if(!response.ok||!result.valid)throw new Error(result.error||'We could not confirm your free Guide request.');const amount=25000;applyFreeOffer(amount);loading.hidden=true;content.hidden=false;if(typeof fbq==='function')fbq('track','ViewContent',{content_name:'Sales Engine App',content_type:'product',value:amount,currency:'NGN'});}catch(problem){loading.hidden=true;errorCopy.textContent=problem.message||'Please return to the free Guide form and try again.';error.style.display='block';}})()})();
@@ -105,6 +110,169 @@
       new IntersectionObserver(entries => {
         entries[0].isIntersecting ? start() : stop();
       }, { threshold: 0.45 }).observe(showcase);
+    })();
+  </script>
+  <script>
+    // Fast offer journey: render first, then save the free signup in the background.
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const legacyToken = params.get('token');
+      const cameFromFreeSignup = params.get('source') === 'free';
+      if (legacyToken && !cameFromFreeSignup) return;
+
+      const buttons = [...document.querySelectorAll('.app-upgrade')];
+      const notice = document.querySelector('.notice');
+      const navNote = document.querySelector('.nav-note');
+      const heroEyebrow = document.querySelector('.hero .eyebrow');
+      const heroTitle = document.querySelector('.hero h1');
+      const heroSummary = document.querySelector('.hero-summary');
+      const heroDescription = document.querySelector('.hero-description');
+      const price = document.querySelector('#upgrade-price');
+      const bottomPrice = document.querySelector('#upgrade-price-bottom');
+      const appTotal = document.querySelector('#app-total');
+      const message = document.querySelector('#checkout-message');
+      const declineButtons = [...document.querySelectorAll('.decline')];
+      const emailGate = document.querySelector('#email-gate');
+      const emailInput = document.querySelector('#checkout-email');
+      const emailError = document.querySelector('#email-error');
+      const declineGate = document.querySelector('#decline-gate');
+      const declineOther = document.querySelector('#decline-other');
+      const declineError = document.querySelector('#decline-error');
+      const declineContinue = document.querySelector('#decline-continue');
+      let token = null;
+      let pending = null;
+      let claimPromise = null;
+      let selectedReason = '';
+
+      document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+        document.querySelector('#gallery-image').src = tab.dataset.image;
+        document.querySelector('#gallery-image').alt = tab.dataset.alt;
+        document.querySelector('#gallery-title').textContent = tab.dataset.title;
+        document.querySelector('#gallery-caption').textContent = tab.dataset.caption;
+      }));
+
+      try { pending = JSON.parse(sessionStorage.getItem('salesEnginePendingFreeSignup') || 'null'); } catch (_) {}
+      try {
+        const saved = JSON.parse(sessionStorage.getItem('salesEngineFreeGuideToken') || 'null');
+        if (saved && saved.token && pending && saved.createdAt === pending.createdAt) token = saved.token;
+      } catch (_) {}
+
+      const setButtons = (disabled, label) => buttons.forEach(button => {
+        button.disabled = disabled;
+        if (label) button.textContent = label;
+      });
+      const showMessage = text => { message.textContent = text; message.classList.add('is-visible'); };
+      const isEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || '').trim());
+      const freeJourney = () => Boolean(token || pending);
+      const applyFreeOffer = () => {
+        notice.innerHTML = '<strong>Your free Guide + Workbook are ready.</strong> Before you download, see the App that makes the same system easier to run.';
+        navNote.textContent = 'Your free bundle is ready';
+        heroEyebrow.textContent = 'Optional App upgrade · Lifetime access';
+        heroTitle.textContent = 'Pair your free Guide with the Sales Engine App.';
+        heroSummary.textContent = 'The Guide gives you the system. The App turns your replies, leads and follow-ups into one practical daily workspace.';
+        heroDescription.textContent = 'One payment gives you lifetime access from your phone or computer.';
+        price.textContent = '₦25,000';
+        bottomPrice.textContent = '₦25,000';
+        price.nextElementSibling.textContent = 'one payment · lifetime access';
+        bottomPrice.nextElementSibling.textContent = 'one payment · lifetime access';
+        appTotal.hidden = true;
+        buttons.forEach(button => { if (!button.disabled) button.textContent = 'Get lifetime App access →'; });
+        declineButtons.forEach(button => { button.textContent = 'No thanks — download my free Guide + Workbook'; });
+      };
+
+      if (pending) applyFreeOffer();
+      if (typeof fbq === 'function') fbq('track', 'ViewContent', { content_name: 'Sales Engine App', content_type: 'product', value: 25000, currency: 'NGN' });
+
+      const claimFreeSignup = () => {
+        if (token) return Promise.resolve(token);
+        if (!pending || !pending.values) return Promise.reject(new Error('Your free-bundle details are unavailable. Please request the bundle again.'));
+        if (claimPromise) return claimPromise;
+        claimPromise = fetch('/api/free-guide?action=claim', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(pending.values),
+        }).then(async response => {
+          const raw = await response.text();
+          let result = {};
+          try { result = JSON.parse(raw); } catch (_) { throw new Error('Your free bundle is still being prepared. Please try again in a moment.'); }
+          if (!response.ok || !result.token) throw new Error(result.error || 'Your free bundle is still being prepared. Please try again in a moment.');
+          token = result.token;
+          sessionStorage.setItem('salesEngineFreeGuideToken', JSON.stringify({ token, createdAt: pending.createdAt }));
+          sessionStorage.removeItem('salesEnginePendingFreeSignup');
+          pending = null;
+          history.replaceState({}, '', `upsell.html?token=${encodeURIComponent(token)}`);
+          if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Free 24/7 Sales Engine Guide + Workbook' });
+          return token;
+        }).catch(error => { claimPromise = null; throw error; });
+        return claimPromise;
+      };
+      if (pending) setTimeout(() => { claimFreeSignup().catch(() => {}); }, 0);
+
+      const attribution = () => {
+        try { return JSON.parse(sessionStorage.getItem('salesEngineAttribution') || '{}'); } catch (_) { return {}; }
+      };
+      const startCheckout = async payload => {
+        message.classList.remove('is-visible');
+        setButtons(true, 'Opening secure payment…');
+        try {
+          if (payload.token) fetch('/api/free-guide/app-click', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true, body: JSON.stringify({ token: payload.token }) }).catch(() => {});
+          const response = await fetch('/api/paystack/app-initialize', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...payload, ...attribution() }) });
+          const raw = await response.text();
+          let result = {};
+          try { result = JSON.parse(raw); } catch (_) { throw new Error('We could not start secure checkout. Please try again.'); }
+          if (!response.ok || !result.authorizationUrl) throw new Error(result.error || 'We could not start secure checkout.');
+          if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', { content_name: 'Sales Engine App', content_type: 'product', value: 25000, currency: 'NGN' });
+          location.assign(result.authorizationUrl);
+        } catch (error) {
+          showMessage(error.message || 'Secure checkout could not open. Please try again.');
+          setButtons(false, 'Get lifetime App access →');
+        }
+      };
+      buttons.forEach(button => button.addEventListener('click', async () => {
+        if (freeJourney()) {
+          setButtons(true, 'Preparing secure checkout…');
+          try { await startCheckout({ token: await claimFreeSignup() }); } catch (error) { showMessage(error.message); setButtons(false, 'Get lifetime App access →'); }
+          return;
+        }
+        emailError.textContent = '';
+        emailGate.hidden = false;
+        emailInput.focus();
+      }));
+      document.querySelector('#email-cancel').addEventListener('click', () => { emailGate.hidden = true; });
+      document.querySelector('#email-continue').addEventListener('click', () => {
+        const email = emailInput.value.trim().toLowerCase();
+        if (!isEmail(email)) { emailError.textContent = 'Enter a valid email address.'; emailInput.focus(); return; }
+        emailGate.hidden = true;
+        startCheckout({ email });
+      });
+
+      declineButtons.forEach(button => button.addEventListener('click', event => {
+        event.preventDefault();
+        if (!freeJourney()) { location.assign('checkout.html'); return; }
+        declineGate.hidden = false;
+        declineError.textContent = '';
+        document.querySelector('.decline-choice')?.focus();
+      }));
+      document.querySelectorAll('.decline-choice').forEach(choice => choice.addEventListener('click', () => {
+        selectedReason = choice.dataset.reason;
+        document.querySelectorAll('.decline-choice').forEach(item => item.setAttribute('aria-pressed', String(item === choice)));
+        declineOther.hidden = selectedReason !== 'Other';
+        if (selectedReason !== 'Other') declineOther.value = '';
+        declineError.textContent = '';
+      }));
+      document.querySelector('#decline-cancel').addEventListener('click', () => { declineGate.hidden = true; });
+      declineContinue.addEventListener('click', async () => {
+        if (!selectedReason) { declineError.textContent = 'Choose one answer to continue to your files.'; return; }
+        declineContinue.disabled = true;
+        declineContinue.textContent = 'Opening your files…';
+        try {
+          const currentToken = await claimFreeSignup();
+          fetch('/api/free-guide/decline', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true, body: JSON.stringify({ token: currentToken, reason: selectedReason, otherText: declineOther.value }) }).catch(() => {});
+          location.assign(`guide-access.html?token=${encodeURIComponent(currentToken)}`);
+        } catch (error) {
+          declineError.textContent = error.message || 'Your free files are still being prepared. Please try again.';
+          declineContinue.disabled = false;
+          declineContinue.textContent = 'Continue to my files →';
+        }
+      });
     })();
   </script>
 </body></html>
