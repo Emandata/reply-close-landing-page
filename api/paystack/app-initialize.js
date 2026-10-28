@@ -16,7 +16,11 @@ module.exports = async (req, res) => {
   if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed.' });
 
   const claim = verifyGuideToken(req.body && req.body.token);
-  if (!claim) return json(res, 401, { error: 'Your free Guide link has expired. Please request the bundle again.' });
+  const directEmail = clean(req.body && req.body.email, 254).toLowerCase();
+  const email = claim ? claim.email : directEmail;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return json(res, 400, { error: 'Enter the email you want to use for your App account.' });
+  }
   const secretKey = getSecretKey();
   if (!secretKey) return json(res, 503, { error: 'Secure checkout is not configured yet. Please try again shortly.' });
 
@@ -26,7 +30,7 @@ module.exports = async (req, res) => {
   const eventSourceUrl = clean(req.body && req.body.eventSourceUrl, 2000);
   const clientUserAgent = clean(req.body && req.body.clientUserAgent, 1000);
   const transaction = {
-    email: claim.email,
+    email,
     // Paystack requires an integer amount in kobo. Keeping this literal here
     // prevents a stale shared config from ever producing an invalid amount.
     amount: 2500000,
@@ -37,16 +41,16 @@ module.exports = async (req, res) => {
       product: APP_PRODUCT,
       purchase_kind: 'app',
       includes_app: true,
-      customer_email: claim.email,
-      free_guide_claim: true,
+      customer_email: email,
+      free_guide_claim: Boolean(claim),
       // Tracking-only link back to this free Guide signup. It does not change checkout or App access.
-      free_guide_claim_id: claim.claimId || '',
+      free_guide_claim_id: claim && claim.claimId || '',
       fbp,
       fbc,
       event_source_url: eventSourceUrl || `${origin}/upsell.html`,
       client_ip_address: requestIp(req),
       client_user_agent: clientUserAgent || String(req.headers['user-agent'] || '').slice(0, 1000),
-      cancel_action: `${origin}/upsell.html?token=${encodeURIComponent(req.body.token)}`,
+      cancel_action: claim ? `${origin}/upsell.html?token=${encodeURIComponent(req.body.token)}` : `${origin}/upsell.html`,
     }),
   };
 
